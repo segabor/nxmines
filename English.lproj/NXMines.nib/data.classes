@@ -1,0 +1,30 @@
+"FirstResponder" = {ACTIONS = {}; OUTLETS = {}; SUPERCLASS = NSObject; };
+"MyApp" = {
+    ACTIONS = {"appDidInit:" = id; "windowWillClose:" = id; }; 
+    OUTLETS = {gameWindow = id; mineView = id; }; 
+    SUPERCLASS = NSApplication; 
+};
+"NXMineView" = {
+    ACTIONS = {
+        "buttonPushed:" = id; 
+        "postInit:" = id; 
+        "resetScores:" = id; 
+        "setBeginner:" = id; 
+        "setExpert:" = id; 
+        "setMedium:" = id; 
+        "startGame:" = id; 
+    }; 
+    OUTLETS = {
+        bombDisplay = id; 
+        name0 = id; 
+        name1 = id; 
+        name2 = id; 
+        scorePanel = id; 
+        startButton = id; 
+        time0 = id; 
+        time1 = id; 
+        time2 = id; 
+        timeDisplay = id; 
+    }; 
+    SUPERCLASS = NSView; 
+};
