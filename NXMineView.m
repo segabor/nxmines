@@ -1,3 +1,10 @@
+//
+//  NXMineView.m
+//  NXMines
+//
+//  Created by G÷bor Sebesty›n on 2005.03.26..
+//  Copyright 2005 __MyCompanyName__. All rights reserved.
+//
 
 #import "MineButton.h"
 #import "NXMineView.h"
@@ -160,20 +167,17 @@ const NSString *iNumbers[] = {
 	
 	switch (gameMode) {
 		case BEGINNER:
+		default: 
 			[self initFieldsW:10 H:10 Bombs: 10];
-			[[self window] setTitle: @"NXMines - Beginner"];
+			[[self window] setTitle: @"Beginner"];
 			break;
 		case MEDIUM:
 			[self initFieldsW:20 H:20 Bombs: 60];
-			[[self window] setTitle: @"NXMines - Medium"];
+			[[self window] setTitle: @"Medium"];
 			break;
 		case EXPERT:
 			[self initFieldsW:20 H:20 Bombs: 100];
-			[[self window] setTitle: @"NXMines - Expert"];
-			break;
-		default: 
-			[self initFieldsW:10 H:10 Bombs: 10];
-			[[self window] setTitle: @"NXMines - Beginner"];
+			[[self window] setTitle: @"Expert"];
 			break;
 	}
 	

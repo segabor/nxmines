@@ -2,7 +2,7 @@
 //  MineButton.m
 //  NXMines
 //
-//  Created by Gábor Sebestyén on 2005.03.26..
+//  Created by G÷bor Sebesty›n on 2005.03.26..
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
