@@ -1,0 +1,38 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = MyApp; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {gameWindow = id; mineView = id; }; 
+            SUPERCLASS = NSApplication; 
+        }, 
+        {
+            ACTIONS = {
+                buttonPushed = id; 
+                postInit = id; 
+                resetScores = id; 
+                setBeginner = id; 
+                setExpert = id; 
+                setMedium = id; 
+                startGame = id; 
+            }; 
+            CLASS = NXMineView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                bombDisplay = id; 
+                name0 = id; 
+                name1 = id; 
+                name2 = id; 
+                scorePanel = id; 
+                startButton = id; 
+                time0 = id; 
+                time1 = id; 
+                time2 = id; 
+                timeDisplay = id; 
+            }; 
+            SUPERCLASS = NSView; 
+        }
+    ); 
+    IBVersion = 1; 
+}
