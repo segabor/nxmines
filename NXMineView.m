@@ -12,7 +12,7 @@
 int dx[] = {-1,  0,  1, -1, 1, -1, 0, 1};
 int dy[] = {-1, -1, -1,  0, 0,  1, 1, 1};
 
-const NSString *iNumbers[] = {
+NSString *iNumbers[] = {
 	@"brickPushed.tiff",
 	@"brick1.tiff",
 	@"brick2.tiff",
@@ -276,7 +276,7 @@ const NSString *iNumbers[] = {
 
 -(void) buttonPushed: sender
 {
-    int index = [fieldsList indexOfObject: sender];
+    NSUInteger index = [fieldsList indexOfObject: sender];
     int xx, yy, aTag;
     int i, g;
     
@@ -322,7 +322,7 @@ const NSString *iNumbers[] = {
 			break;
     }
 
-    if ( (maxspc == bombs) /* && ![bombDisplay intValue] */) {
+    if ( maxspc == bombs /* && ![bombDisplay intValue] */) {
 		// Win !!!
 		[self endGame: YES];
     }
@@ -332,7 +332,7 @@ const NSString *iNumbers[] = {
 
 -(void) rightButtonPushed: sender
 {
-    int index = [fieldsList indexOfObject: sender];
+    NSUInteger index = [fieldsList indexOfObject: sender];
     int x, y, cnt, aTag;
     id obj;
 	
@@ -364,7 +364,7 @@ const NSString *iNumbers[] = {
     }
 	
 	//Win !!!
-    if ( (maxspc == bombs) /* && ![bombDisplay intValue] */ ) {
+    if ( maxspc == bombs /* && ![bombDisplay intValue] */ ) {
 		[self endGame: YES];
     }
 
