@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		C20C02F00E74F530006777F1 /* brick1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E80E74F530006777F1 /* brick1.tiff */; };
+		C20C02F10E74F530006777F1 /* brick2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E90E74F530006777F1 /* brick2.tiff */; };
+		C20C02F20E74F530006777F1 /* brick3.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EA0E74F530006777F1 /* brick3.tiff */; };
+		C20C02F30E74F530006777F1 /* brick4.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EB0E74F530006777F1 /* brick4.tiff */; };
+		C20C02F40E74F530006777F1 /* brick5.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EC0E74F530006777F1 /* brick5.tiff */; };
+		C20C02F50E74F530006777F1 /* brick6.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02ED0E74F530006777F1 /* brick6.tiff */; };
+		C20C02F60E74F530006777F1 /* brick7.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EE0E74F530006777F1 /* brick7.tiff */; };
+		C20C02F70E74F530006777F1 /* brick8.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EF0E74F530006777F1 /* brick8.tiff */; };
+		C277501508015DE500343A62 /* NXMines.nib in Resources */ = {isa = PBXBuildFile; fileRef = C277501308015DE500343A62 /* NXMines.nib */; };
+		C277502608015E3500343A62 /* brick.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501808015E3500343A62 /* brick.tiff */; };
+		C277502708015E3500343A62 /* brickPushedAndNoBomb.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501908015E3500343A62 /* brickPushedAndNoBomb.tiff */; };
+		C277502808015E3500343A62 /* brickPushedAndFalseBomb.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501A08015E3500343A62 /* brickPushedAndFalseBomb.tiff */; };
+		C277502908015E3500343A62 /* brickPushedAndBomb.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501B08015E3500343A62 /* brickPushedAndBomb.tiff */; };
+		C277502A08015E3500343A62 /* brickPushed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501C08015E3500343A62 /* brickPushed.tiff */; };
+		C277502B08015E3500343A62 /* brickAndFlag.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501D08015E3500343A62 /* brickAndFlag.tiff */; };
+		C277503808015E4300343A62 /* NXMines5.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503508015E4300343A62 /* NXMines5.tiff */; };
+		C277503908015E4400343A62 /* NXMines.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503608015E4300343A62 /* NXMines.tiff */; };
+		C277503A08015E4400343A62 /* HighScores.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503708015E4300343A62 /* HighScores.tiff */; };
+		C277503C08015E9D00343A62 /* smilee.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503B08015E9D00343A62 /* smilee.tiff */; };
+		C277504308015EF200343A62 /* MineButton.h in Resources */ = {isa = PBXBuildFile; fileRef = C277503D08015EF200343A62 /* MineButton.h */; };
+		C277504408015EF200343A62 /* MineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C277503E08015EF200343A62 /* MineButton.m */; };
+		C277504508015EF200343A62 /* MyApp.h in Resources */ = {isa = PBXBuildFile; fileRef = C277503F08015EF200343A62 /* MyApp.h */; };
+		C277504608015EF200343A62 /* MyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C277504008015EF200343A62 /* MyApp.m */; };
+		C277504708015EF200343A62 /* NXMineView.h in Resources */ = {isa = PBXBuildFile; fileRef = C277504108015EF200343A62 /* NXMineView.h */; };
+		C277504808015EF200343A62 /* NXMineView.m in Sources */ = {isa = PBXBuildFile; fileRef = C277504208015EF200343A62 /* NXMineView.m */; };
+		C277506A0801601600343A62 /* NXMines_main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27750690801601600343A62 /* NXMines_main.m */; };
+		C27750770801609A00343A62 /* NXMines.icns in Resources */ = {isa = PBXBuildFile; fileRef = C27750760801609A00343A62 /* NXMines.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* NXMines_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXMines_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* NXMines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXMines.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20C02E80E74F530006777F1 /* brick1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick1.tiff; sourceTree = "<group>"; };
+		C20C02E90E74F530006777F1 /* brick2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick2.tiff; sourceTree = "<group>"; };
+		C20C02EA0E74F530006777F1 /* brick3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick3.tiff; sourceTree = "<group>"; };
+		C20C02EB0E74F530006777F1 /* brick4.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick4.tiff; sourceTree = "<group>"; };
+		C20C02EC0E74F530006777F1 /* brick5.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick5.tiff; sourceTree = "<group>"; };
+		C20C02ED0E74F530006777F1 /* brick6.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick6.tiff; sourceTree = "<group>"; };
+		C20C02EE0E74F530006777F1 /* brick7.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick7.tiff; sourceTree = "<group>"; };
+		C20C02EF0E74F530006777F1 /* brick8.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick8.tiff; sourceTree = "<group>"; };
+		C277501408015DE500343A62 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "English.lproj/NXMines-Cocoa.nib"; sourceTree = "<group>"; };
+		C277501808015E3500343A62 /* brick.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick.tiff; sourceTree = "<group>"; };
+		C277501908015E3500343A62 /* brickPushedAndNoBomb.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickPushedAndNoBomb.tiff; sourceTree = "<group>"; };
+		C277501A08015E3500343A62 /* brickPushedAndFalseBomb.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickPushedAndFalseBomb.tiff; sourceTree = "<group>"; };
+		C277501B08015E3500343A62 /* brickPushedAndBomb.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickPushedAndBomb.tiff; sourceTree = "<group>"; };
+		C277501C08015E3500343A62 /* brickPushed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickPushed.tiff; sourceTree = "<group>"; };
+		C277501D08015E3500343A62 /* brickAndFlag.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickAndFlag.tiff; sourceTree = "<group>"; };
+		C277503508015E4300343A62 /* NXMines5.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NXMines5.tiff; sourceTree = "<group>"; };
+		C277503608015E4300343A62 /* NXMines.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NXMines.tiff; sourceTree = "<group>"; };
+		C277503708015E4300343A62 /* HighScores.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = HighScores.tiff; sourceTree = "<group>"; };
+		C277503B08015E9D00343A62 /* smilee.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = smilee.tiff; sourceTree = "<group>"; };
+		C277503D08015EF200343A62 /* MineButton.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = MineButton.h; sourceTree = "<group>"; };
+		C277503E08015EF200343A62 /* MineButton.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = MineButton.m; sourceTree = "<group>"; };
+		C277503F08015EF200343A62 /* MyApp.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = MyApp.h; sourceTree = "<group>"; };
+		C277504008015EF200343A62 /* MyApp.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = MyApp.m; sourceTree = "<group>"; };
+		C277504108015EF200343A62 /* NXMineView.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = NXMineView.h; sourceTree = "<group>"; };
+		C277504208015EF200343A62 /* NXMineView.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = NXMineView.m; sourceTree = "<group>"; };
+		C27750690801601600343A62 /* NXMines_main.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = NXMines_main.m; sourceTree = "<group>"; };
+		C27750760801609A00343A62 /* NXMines.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = NXMines.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C277503D08015EF200343A62 /* MineButton.h */,
+				C277503E08015EF200343A62 /* MineButton.m */,
+				C277503F08015EF200343A62 /* MyApp.h */,
+				C277504008015EF200343A62 /* MyApp.m */,
+				C277504108015EF200343A62 /* NXMineView.h */,
+				C277504208015EF200343A62 /* NXMineView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* NXMines.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* NXMines */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				C277501708015E1900343A62 /* Images */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = NXMines;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* NXMines_Prefix.pch */,
+				C27750690801601600343A62 /* NXMines_main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C27750760801609A00343A62 /* NXMines.icns */,
+				C277501308015DE500343A62 /* NXMines.nib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C277501708015E1900343A62 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C20C02E80E74F530006777F1 /* brick1.tiff */,
+				C20C02E90E74F530006777F1 /* brick2.tiff */,
+				C20C02EA0E74F530006777F1 /* brick3.tiff */,
+				C20C02EB0E74F530006777F1 /* brick4.tiff */,
+				C20C02EC0E74F530006777F1 /* brick5.tiff */,
+				C20C02ED0E74F530006777F1 /* brick6.tiff */,
+				C20C02EE0E74F530006777F1 /* brick7.tiff */,
+				C20C02EF0E74F530006777F1 /* brick8.tiff */,
+				C277503B08015E9D00343A62 /* smilee.tiff */,
+				C277503508015E4300343A62 /* NXMines5.tiff */,
+				C277503608015E4300343A62 /* NXMines.tiff */,
+				C277503708015E4300343A62 /* HighScores.tiff */,
+				C277501808015E3500343A62 /* brick.tiff */,
+				C277501908015E3500343A62 /* brickPushedAndNoBomb.tiff */,
+				C277501A08015E3500343A62 /* brickPushedAndFalseBomb.tiff */,
+				C277501B08015E3500343A62 /* brickPushedAndBomb.tiff */,
+				C277501C08015E3500343A62 /* brickPushed.tiff */,
+				C277501D08015E3500343A62 /* brickAndFlag.tiff */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* NXMines */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C20C02E00E74F42D006777F1 /* Build configuration list for PBXNativeTarget "NXMines" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NXMines;
+			productInstallPath = "$(HOME)/Applications";
+			productName = NXMines;
+			productReference = 8D1107320486CEB800E47090 /* NXMines.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = C20C02DF0E74F42D006777F1 /* Build configuration list for PBXProject "NXMines" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* NXMines */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* NXMines */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				C277501508015DE500343A62 /* NXMines.nib in Resources */,
+				C277502608015E3500343A62 /* brick.tiff in Resources */,
+				C277502708015E3500343A62 /* brickPushedAndNoBomb.tiff in Resources */,
+				C277502808015E3500343A62 /* brickPushedAndFalseBomb.tiff in Resources */,
+				C277502908015E3500343A62 /* brickPushedAndBomb.tiff in Resources */,
+				C277502A08015E3500343A62 /* brickPushed.tiff in Resources */,
+				C277502B08015E3500343A62 /* brickAndFlag.tiff in Resources */,
+				C277503808015E4300343A62 /* NXMines5.tiff in Resources */,
+				C277503908015E4400343A62 /* NXMines.tiff in Resources */,
+				C277503A08015E4400343A62 /* HighScores.tiff in Resources */,
+				C277503C08015E9D00343A62 /* smilee.tiff in Resources */,
+				C277504308015EF200343A62 /* MineButton.h in Resources */,
+				C277504508015EF200343A62 /* MyApp.h in Resources */,
+				C277504708015EF200343A62 /* NXMineView.h in Resources */,
+				C27750770801609A00343A62 /* NXMines.icns in Resources */,
+				C20C02F00E74F530006777F1 /* brick1.tiff in Resources */,
+				C20C02F10E74F530006777F1 /* brick2.tiff in Resources */,
+				C20C02F20E74F530006777F1 /* brick3.tiff in Resources */,
+				C20C02F30E74F530006777F1 /* brick4.tiff in Resources */,
+				C20C02F40E74F530006777F1 /* brick5.tiff in Resources */,
+				C20C02F50E74F530006777F1 /* brick6.tiff in Resources */,
+				C20C02F60E74F530006777F1 /* brick7.tiff in Resources */,
+				C20C02F70E74F530006777F1 /* brick8.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C277504408015EF200343A62 /* MineButton.m in Sources */,
+				C277504608015EF200343A62 /* MyApp.m in Sources */,
+				C277504808015EF200343A62 /* NXMineView.m in Sources */,
+				C277506A0801601600343A62 /* NXMines_main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C277501308015DE500343A62 /* NXMines.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C277501408015DE500343A62 /* English */,
+			);
+			name = NXMines.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C20C02D90E74F42C006777F1 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		C20C02DA0E74F42C006777F1 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		C20C02DB0E74F42C006777F1 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+		C20C02DC0E74F42C006777F1 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = NXMines;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		C20C02DD0E74F42C006777F1 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = NXMines;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		C20C02DE0E74F42C006777F1 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = NXMines;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C20C02DF0E74F42D006777F1 /* Build configuration list for PBXProject "NXMines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C20C02D90E74F42C006777F1 /* Development */,
+				C20C02DA0E74F42C006777F1 /* Deployment */,
+				C20C02DB0E74F42C006777F1 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		C20C02E00E74F42D006777F1 /* Build configuration list for PBXNativeTarget "NXMines" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C20C02DC0E74F42C006777F1 /* Development */,
+				C20C02DD0E74F42C006777F1 /* Deployment */,
+				C20C02DE0E74F42C006777F1 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
