@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		C20BA46819560592001FC912 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BA46719560592001FC912 /* main.swift */; };
 		C20C02F00E74F530006777F1 /* brick1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E80E74F530006777F1 /* brick1.tiff */; };
 		C20C02F10E74F530006777F1 /* brick2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E90E74F530006777F1 /* brick2.tiff */; };
 		C20C02F20E74F530006777F1 /* brick3.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EA0E74F530006777F1 /* brick3.tiff */; };
@@ -17,6 +18,7 @@
 		C20C02F50E74F530006777F1 /* brick6.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02ED0E74F530006777F1 /* brick6.tiff */; };
 		C20C02F60E74F530006777F1 /* brick7.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EE0E74F530006777F1 /* brick7.tiff */; };
 		C20C02F70E74F530006777F1 /* brick8.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EF0E74F530006777F1 /* brick8.tiff */; };
+		C2411A2A1955FA1A00406B2E /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2411A291955FA1A00406B2E /* MyApp.swift */; };
 		C277501508015DE500343A62 /* NXMines.nib in Resources */ = {isa = PBXBuildFile; fileRef = C277501308015DE500343A62 /* NXMines.nib */; };
 		C277502608015E3500343A62 /* brick.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501808015E3500343A62 /* brick.tiff */; };
 		C277502708015E3500343A62 /* brickPushedAndNoBomb.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277501908015E3500343A62 /* brickPushedAndNoBomb.tiff */; };
@@ -30,11 +32,8 @@
 		C277503C08015E9D00343A62 /* smilee.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503B08015E9D00343A62 /* smilee.tiff */; };
 		C277504308015EF200343A62 /* MineButton.h in Resources */ = {isa = PBXBuildFile; fileRef = C277503D08015EF200343A62 /* MineButton.h */; };
 		C277504408015EF200343A62 /* MineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C277503E08015EF200343A62 /* MineButton.m */; };
-		C277504508015EF200343A62 /* MyApp.h in Resources */ = {isa = PBXBuildFile; fileRef = C277503F08015EF200343A62 /* MyApp.h */; };
-		C277504608015EF200343A62 /* MyApp.m in Sources */ = {isa = PBXBuildFile; fileRef = C277504008015EF200343A62 /* MyApp.m */; };
 		C277504708015EF200343A62 /* NXMineView.h in Resources */ = {isa = PBXBuildFile; fileRef = C277504108015EF200343A62 /* NXMineView.h */; };
 		C277504808015EF200343A62 /* NXMineView.m in Sources */ = {isa = PBXBuildFile; fileRef = C277504208015EF200343A62 /* NXMineView.m */; };
-		C277506A0801601600343A62 /* NXMines_main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27750690801601600343A62 /* NXMines_main.m */; };
 		C27750770801609A00343A62 /* NXMines.icns in Resources */ = {isa = PBXBuildFile; fileRef = C27750760801609A00343A62 /* NXMines.icns */; };
 /* End PBXBuildFile section */
 
@@ -43,9 +42,10 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* NXMines_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXMines_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* NXMines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXMines.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C20BA4661956051A001FC912 /* NXMines_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXMines_Prefix.pch; sourceTree = "<group>"; };
+		C20BA46719560592001FC912 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C20C02E80E74F530006777F1 /* brick1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick1.tiff; sourceTree = "<group>"; };
 		C20C02E90E74F530006777F1 /* brick2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick2.tiff; sourceTree = "<group>"; };
 		C20C02EA0E74F530006777F1 /* brick3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick3.tiff; sourceTree = "<group>"; };
@@ -54,6 +54,8 @@
 		C20C02ED0E74F530006777F1 /* brick6.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick6.tiff; sourceTree = "<group>"; };
 		C20C02EE0E74F530006777F1 /* brick7.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick7.tiff; sourceTree = "<group>"; };
 		C20C02EF0E74F530006777F1 /* brick8.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick8.tiff; sourceTree = "<group>"; };
+		C2411A281955FA1900406B2E /* NXMines-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NXMines-Bridging-Header.h"; sourceTree = "<group>"; };
+		C2411A291955FA1A00406B2E /* MyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		C277501408015DE500343A62 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "English.lproj/NXMines-Cocoa.nib"; sourceTree = "<group>"; };
 		C277501808015E3500343A62 /* brick.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick.tiff; sourceTree = "<group>"; };
 		C277501908015E3500343A62 /* brickPushedAndNoBomb.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brickPushedAndNoBomb.tiff; sourceTree = "<group>"; };
@@ -67,11 +69,8 @@
 		C277503B08015E9D00343A62 /* smilee.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = smilee.tiff; sourceTree = "<group>"; };
 		C277503D08015EF200343A62 /* MineButton.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = MineButton.h; sourceTree = "<group>"; };
 		C277503E08015EF200343A62 /* MineButton.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = MineButton.m; sourceTree = "<group>"; };
-		C277503F08015EF200343A62 /* MyApp.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = MyApp.h; sourceTree = "<group>"; };
-		C277504008015EF200343A62 /* MyApp.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = MyApp.m; sourceTree = "<group>"; };
 		C277504108015EF200343A62 /* NXMineView.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = NXMineView.h; sourceTree = "<group>"; };
 		C277504208015EF200343A62 /* NXMineView.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = NXMineView.m; sourceTree = "<group>"; };
-		C27750690801601600343A62 /* NXMines_main.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = NXMines_main.m; sourceTree = "<group>"; };
 		C27750760801609A00343A62 /* NXMines.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = NXMines.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,10 +91,10 @@
 			children = (
 				C277503D08015EF200343A62 /* MineButton.h */,
 				C277503E08015EF200343A62 /* MineButton.m */,
-				C277503F08015EF200343A62 /* MyApp.h */,
-				C277504008015EF200343A62 /* MyApp.m */,
 				C277504108015EF200343A62 /* NXMineView.h */,
 				C277504208015EF200343A62 /* NXMineView.m */,
+				C2411A291955FA1A00406B2E /* MyApp.swift */,
+				C2411A281955FA1900406B2E /* NXMines-Bridging-Header.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -141,8 +140,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* NXMines_Prefix.pch */,
-				C27750690801601600343A62 /* NXMines_main.m */,
+				C20BA4661956051A001FC912 /* NXMines_Prefix.pch */,
+				C20BA46719560592001FC912 /* main.swift */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -219,7 +218,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 			};
 			buildConfigurationList = C20C02DF0E74F42D006777F1 /* Build configuration list for PBXProject "NXMines" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -255,7 +254,6 @@
 				C277503A08015E4400343A62 /* HighScores.tiff in Resources */,
 				C277503C08015E9D00343A62 /* smilee.tiff in Resources */,
 				C277504308015EF200343A62 /* MineButton.h in Resources */,
-				C277504508015EF200343A62 /* MyApp.h in Resources */,
 				C277504708015EF200343A62 /* NXMineView.h in Resources */,
 				C27750770801609A00343A62 /* NXMines.icns in Resources */,
 				C20C02F00E74F530006777F1 /* brick1.tiff in Resources */,
@@ -277,9 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C277504408015EF200343A62 /* MineButton.m in Sources */,
-				C277504608015EF200343A62 /* MyApp.m in Sources */,
 				C277504808015EF200343A62 /* NXMineView.m in Sources */,
-				C277506A0801601600343A62 /* NXMines_main.m in Sources */,
+				C2411A2A1955FA1A00406B2E /* MyApp.swift in Sources */,
+				C20BA46819560592001FC912 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,24 +306,28 @@
 		C20C02D90E74F42C006777F1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Development;
 		};
 		C20C02DA0E74F42C006777F1 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Deployment;
 		};
 		C20C02DB0E74F42C006777F1 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Default;
 		};
 		C20C02DC0E74F42C006777F1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -336,7 +338,10 @@
 				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
+				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -345,6 +350,7 @@
 		C20C02DD0E74F42C006777F1 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -353,7 +359,9 @@
 				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
+				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -362,13 +370,16 @@
 		C20C02DE0E74F42C006777F1 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = NXMines_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
+				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
