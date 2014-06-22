@@ -40,9 +40,9 @@ NSString *iNumbers[] = {
 
 	[self loadScores];
 	
-    [name0 setDelegate: self];
-    [name1 setDelegate: self];
-    [name2 setDelegate: self];
+    // [name0 setDelegate: self];
+    // [name1 setDelegate: self];
+    // [name2 setDelegate: self];
 
     [self setGameMode: gameMode];
 }
@@ -77,7 +77,7 @@ NSString *iNumbers[] = {
     return YES;
 }
 
-- initFieldsW:(int)w H:(int)h Bombs:(int)Bombs
+-(id) initFieldsW:(int)w H:(int)h Bombs:(int)Bombs
 {
     int i, g;
     NSButton *obj;
@@ -107,15 +107,8 @@ NSString *iNumbers[] = {
 
     for (i=0; i<h ; i++) {
 		for (g=0; g<w; g++) {
-			// obj = [[NSButton alloc] initWithFrame: NSMakeRect((g*18), (i*18), 18, 18)];
 			obj = [[MineButton alloc] initWithFrame: NSMakeRect((g*18), (i*18), 18, 18)];
 
-			/*
-			[obj setButtonType: NSMomentaryChangeButton];
-			[obj setImage: [NSImage imageNamed: @"brick.tiff"]];
-			[obj setAlternateImage: [NSImage imageNamed: @"brickPushed.tiff"]];
-			[obj setBordered: NO];
-			 */
 			[obj setTarget: self];
 			[obj setAction:@selector(buttonPushed:)];
 
@@ -130,25 +123,25 @@ NSString *iNumbers[] = {
     return self;
 }
 
-- setBeginner: sender
+-(IBAction) setBeginner: sender
 {
     [self setGameMode:BEGINNER];
     return self;
 }
 
-- setMedium: sender
+-(IBAction) setMedium: sender
 {
     [self setGameMode:MEDIUM];
     return self;
 }
 
-- setExpert: sender
+-(IBAction) setExpert: sender
 {
     [self setGameMode:EXPERT];
     return self;
 }
 
-- setGameMode:(int)mode
+-(id) setGameMode:(int)mode
 {
     int i;
 	
@@ -186,7 +179,7 @@ NSString *iNumbers[] = {
     return self;
 }
 
-- startGame:sender
+-(IBAction) startGame:sender
 {
     int i;
     int rnd;
@@ -233,7 +226,7 @@ NSString *iNumbers[] = {
     return self;
 }
 
-- endGame:(BOOL)win
+-(id) endGame:(BOOL)win
 {
     id tm, nm;
 
@@ -274,7 +267,7 @@ NSString *iNumbers[] = {
     return self;
 }
 
--(void) buttonPushed: sender
+-(IBAction) buttonPushed: sender
 {
     NSUInteger index = [fieldsList indexOfObject: sender];
     int xx, yy, aTag;
@@ -367,8 +360,6 @@ NSString *iNumbers[] = {
     if ( maxspc == bombs /* && ![bombDisplay intValue] */ ) {
 		[self endGame: YES];
     }
-
-    return;
 }
 
 -(int) tagOfX:(int)x Y:(int)y

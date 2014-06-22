@@ -24,20 +24,19 @@
 #define INTERVAL 1
 #define PRIORITY 1
 
-// void timer(DPSTimedEntry tEntry, double now, void *udata);
 
 @interface NXMineView : NSView
 {
-    id	bombDisplay;
-    id	startButton;
-    id	timeDisplay;
-    id	scorePanel;
-    id	name0;
-    id	name1;
-    id	name2;
-    id	time0;
-    id	time1;
-    id	time2;
+    IBOutlet NSTextField	*bombDisplay;
+    IBOutlet NSButton       *startButton;
+    IBOutlet NSTextField	*timeDisplay;
+    IBOutlet NSPanel        *scorePanel;
+    IBOutlet NSTextField    *name0;
+    IBOutlet NSTextField    *name1;
+    IBOutlet NSTextField    *name2;
+    IBOutlet NSTextField    *time0;
+    IBOutlet NSTextField    *time1;
+    IBOutlet NSTextField    *time2;
 
 	NSMutableArray	*fieldsList;
 	int gameMode;
@@ -59,22 +58,22 @@
 -(void) tick: (NSTimer *) aTimer;
 - (BOOL)acceptsFirstResponder;
 
-- setBeginner:sender;
-- setMedium:sender;
-- setExpert:sender;
-- setGameMode:(int)mode;
-- initFieldsW:(int)w H:(int)h Bombs:(int)Bombs;
-- startGame:sender;
+-(IBAction) setBeginner:sender;
+-(IBAction) setMedium:sender;
+-(IBAction) setExpert:sender;
+-(id) setGameMode:(int)mode;
+-(id) initFieldsW:(int)w H:(int)h Bombs:(int)Bombs;
+-(IBAction) startGame:sender;
 - endGame:(BOOL)win;
 
--(void) buttonPushed: sender;
--(void) rightButtonPushed: sender;
+-(IBAction) buttonPushed: sender;
+-(IBAction) rightButtonPushed: sender;
 
 -(int) tagOfX:(int)x Y:(int)y;
 -(void) checkAtX:(int)xx Y:(int)yy;
 -(void) checkOneAtX:(int)xx Y:(int)yy;
 
--(void) resetScores: sender;
+-(IBAction) resetScores: sender;
 
 -(void) loadScores;
 -(void) saveScores;
