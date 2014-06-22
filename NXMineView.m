@@ -6,8 +6,8 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import "MineButton.h"
 #import "NXMineView.h"
+#import "NXMines-Swift.h"
 
 int dx[] = {-1,  0,  1, -1, 1, -1, 0, 1};
 int dy[] = {-1, -1, -1,  0, 0,  1, 1, 1};

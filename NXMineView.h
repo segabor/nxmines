@@ -24,6 +24,7 @@
 #define INTERVAL 1
 #define PRIORITY 1
 
+@class MineButton;
 
 @interface NXMineView : NSView
 {
