@@ -737,6 +737,7 @@
 							<string key="NSFrame">{{-39, -19}, {380, 300}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="515064478"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="42489006">
 								<int key="NSCellFlags">603979776</int>
@@ -766,6 +767,7 @@
 							<string key="NSFrame">{{93, 132}, {168, 21}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="92841720"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="512762180">
 								<int key="NSCellFlags">-2078277632</int>
@@ -805,6 +807,7 @@
 							<string key="NSFrame">{{269, 136}, {29, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="438795977"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="625602917">
 								<int key="NSCellFlags">-2078277632</int>
@@ -824,6 +827,7 @@
 							<string key="NSFrame">{{91, 159}, {48, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="974132983"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="457772215">
 								<int key="NSCellFlags">67108864</int>
@@ -847,6 +851,7 @@
 							<string key="NSFrame">{{265, 159}, {40, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="711895491"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="821059106">
 								<int key="NSCellFlags">67108864</int>
@@ -866,6 +871,7 @@
 							<string key="NSFrame">{{5, 135}, {74, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="293334864"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="422974655">
 								<int key="NSCellFlags">67108864</int>
@@ -889,6 +895,7 @@
 							<string key="NSFrame">{{93, 105}, {168, 21}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="1069544550"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="440924573">
 								<int key="NSCellFlags">-2078277632</int>
@@ -908,6 +915,7 @@
 							<string key="NSFrame">{{269, 109}, {29, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="211565651"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="161313422">
 								<int key="NSCellFlags">-2078277632</int>
@@ -927,6 +935,7 @@
 							<string key="NSFrame">{{5, 108}, {74, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="437129580"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="749813750">
 								<int key="NSCellFlags">67108864</int>
@@ -946,6 +955,7 @@
 							<string key="NSFrame">{{93, 78}, {168, 21}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="313449563"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="986565072">
 								<int key="NSCellFlags">-2078277632</int>
@@ -984,6 +994,7 @@
 							<string key="NSFrame">{{5, 81}, {74, 18}}</string>
 							<reference key="NSSuperview" ref="977219884"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="218937435"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="991728985">
 								<int key="NSCellFlags">67108864</int>
@@ -1001,8 +1012,10 @@
 					<string key="NSFrameSize">{336, 264}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView" ref="412403426"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSWindowTemplate" id="412292135">
@@ -1023,6 +1036,7 @@
 							<int key="NSvFlags">256</int>
 							<string key="NSFrame">{{-10, -60}, {400, 255}}</string>
 							<reference key="NSSuperview" ref="77300345"/>
+							<reference key="NSNextKeyView" ref="1065785118"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="594944504">
 								<int key="NSCellFlags">603979776</int>
@@ -1047,6 +1061,7 @@
 							<int key="NSvFlags">256</int>
 							<string key="NSFrame">{{5, 7}, {283, 15}}</string>
 							<reference key="NSSuperview" ref="77300345"/>
+							<reference key="NSNextKeyView" ref="730809096"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="223498281">
 								<int key="NSCellFlags">67108864</int>
@@ -1086,9 +1101,11 @@
 							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
 					</array>
-					<string key="NSFrame">{{1, 1}, {376, 153}}</string>
+					<string key="NSFrameSize">{376, 153}</string>
+					<reference key="NSNextKeyView" ref="180586961"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSWindowTemplate" id="125870254">
@@ -1100,8 +1117,9 @@
 				<string key="NSWindowClass">NSWindow</string>
 				<string key="NSViewClass">View</string>
 				<nil key="NSUserInterfaceItemIdentifier"/>
+				<string key="NSWindowContentMinSize">{196, 238}</string>
 				<object class="NSView" key="NSWindowView" id="134666146">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="70959461">
@@ -1109,7 +1127,6 @@
 							<int key="NSvFlags">269</int>
 							<string key="NSFrame">{{78, 203}, {37, 24}}</string>
 							<reference key="NSSuperview" ref="134666146"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="287287410"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="17756442">
@@ -1136,7 +1153,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{8, 196}, {68, 39}}</string>
 							<reference key="NSSuperview" ref="134666146"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="70959461"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="840956796">
@@ -1164,7 +1180,6 @@
 							<int key="NSvFlags">265</int>
 							<string key="NSFrame">{{118, 196}, {68, 39}}</string>
 							<reference key="NSSuperview" ref="134666146"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="698304756"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="955207653">
@@ -1188,18 +1203,16 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{8, 8}, {180, 180}}</string>
 							<reference key="NSSuperview" ref="134666146"/>
-							<reference key="NSWindow"/>
-							<string key="NSClassName">NXMineView</string>
+							<string key="NSClassName">_TtC7NXMines10NXMineView</string>
 							<string key="NSExtension">NSView</string>
 						</object>
 					</array>
 					<string key="NSFrameSize">{194, 242}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="357253605"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMinSize">{196, 260}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 		</array>
@@ -1463,6 +1476,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="293334864"/>
+						<reference key="destination" ref="977219884"/>
+					</object>
+					<int key="connectionID">321</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="218937435"/>
+						<reference key="destination" ref="977219884"/>
+					</object>
+					<int key="connectionID">323</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">name0</string>
 						<reference key="source" ref="698304756"/>
 						<reference key="destination" ref="293334864"/>
@@ -1588,6 +1617,14 @@
 						<reference key="destination" ref="29965000"/>
 					</object>
 					<int key="connectionID">282</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="437129580"/>
+						<reference key="destination" ref="977219884"/>
+					</object>
+					<int key="connectionID">322</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2492,6 +2529,7 @@
 				<string key="254.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="255.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="256.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="257.CustomClassModuleProvider">target</string>
 				<string key="257.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="258.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="259.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2558,7 +2596,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">318</int>
+			<int key="maxID">323</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2611,19 +2649,147 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NXMineView</string>
+					<string key="className">_TtC7NXMines10NXMineView</string>
 					<string key="superclassName">NSView</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="buttonPushed:">id</string>
+						<string key="rightButtonPushed:">id</string>
+						<string key="setBeginner:">id</string>
+						<string key="setExpert:">id</string>
+						<string key="setMedium:">id</string>
+						<string key="startGame:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="buttonPushed:" id="483047151">
+							<string key="name">buttonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="rightButtonPushed:" id="247521682">
+							<string key="name">rightButtonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setBeginner:" id="249978256">
+							<string key="name">setBeginner:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setExpert:" id="228015070">
+							<string key="name">setExpert:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setMedium:" id="335233568">
+							<string key="name">setMedium:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="startGame:" id="712065066">
+							<string key="name">startGame:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bombDisplay">NSTextField</string>
+						<string key="name0">NSTextField</string>
+						<string key="name1">NSTextField</string>
+						<string key="name2">NSTextField</string>
+						<string key="scorePanel">NSPanel</string>
+						<string key="startButton">NSButton</string>
+						<string key="time0">NSTextField</string>
+						<string key="time1">NSTextField</string>
+						<string key="time2">NSTextField</string>
+						<string key="timeDisplay">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="bombDisplay" id="673050272">
+							<string key="name">bombDisplay</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="name0" id="736708989">
+							<string key="name">name0</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="name1" id="700745230">
+							<string key="name">name1</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="name2" id="700737741">
+							<string key="name">name2</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="scorePanel" id="566403072">
+							<string key="name">scorePanel</string>
+							<string key="candidateClassName">NSPanel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="startButton" id="405684981">
+							<string key="name">startButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="time0" id="796474766">
+							<string key="name">time0</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="time1" id="959198194">
+							<string key="name">time1</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="time2" id="140126330">
+							<string key="name">time2</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="timeDisplay" id="1070249636">
+							<string key="name">timeDisplay</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../NXMineView.h</string>
+						<string key="minorKey">../NXMineView.swift</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NXMineView</string>
+					<string key="className">_TtC7NXMines10NXMineView</string>
 					<string key="superclassName">NSView</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="buttonPushed:">id</string>
+						<string key="rightButtonPushed:">id</string>
+						<string key="setBeginner:">id</string>
+						<string key="setExpert:">id</string>
+						<string key="setMedium:">id</string>
+						<string key="startGame:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<reference key="buttonPushed:" ref="483047151"/>
+						<reference key="rightButtonPushed:" ref="247521682"/>
+						<reference key="setBeginner:" ref="249978256"/>
+						<reference key="setExpert:" ref="228015070"/>
+						<reference key="setMedium:" ref="335233568"/>
+						<reference key="startGame:" ref="712065066"/>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="bombDisplay">NSTextField</string>
+						<string key="name0">NSTextField</string>
+						<string key="name1">NSTextField</string>
+						<string key="name2">NSTextField</string>
+						<string key="scorePanel">NSPanel</string>
+						<string key="startButton">NSButton</string>
+						<string key="time0">NSTextField</string>
+						<string key="time1">NSTextField</string>
+						<string key="time2">NSTextField</string>
+						<string key="timeDisplay">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<reference key="bombDisplay" ref="673050272"/>
+						<reference key="name0" ref="736708989"/>
+						<reference key="name1" ref="700745230"/>
+						<reference key="name2" ref="700737741"/>
+						<reference key="scorePanel" ref="566403072"/>
+						<reference key="startButton" ref="405684981"/>
+						<reference key="time0" ref="796474766"/>
+						<reference key="time1" ref="959198194"/>
+						<reference key="time2" ref="140126330"/>
+						<reference key="timeDisplay" ref="1070249636"/>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NXMineView.h</string>
+						<string key="minorKey">./Classes/_TtC7NXMines10NXMineView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

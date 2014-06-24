@@ -30,10 +30,9 @@
 		C277503908015E4400343A62 /* NXMines.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503608015E4300343A62 /* NXMines.tiff */; };
 		C277503A08015E4400343A62 /* HighScores.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503708015E4300343A62 /* HighScores.tiff */; };
 		C277503C08015E9D00343A62 /* smilee.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C277503B08015E9D00343A62 /* smilee.tiff */; };
-		C277504708015EF200343A62 /* NXMineView.h in Resources */ = {isa = PBXBuildFile; fileRef = C277504108015EF200343A62 /* NXMineView.h */; };
-		C277504808015EF200343A62 /* NXMineView.m in Sources */ = {isa = PBXBuildFile; fileRef = C277504208015EF200343A62 /* NXMineView.m */; };
 		C27750770801609A00343A62 /* NXMines.icns in Resources */ = {isa = PBXBuildFile; fileRef = C27750760801609A00343A62 /* NXMines.icns */; };
 		C2B658021956DC6F009E374E /* MineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B658011956DC6F009E374E /* MineButton.swift */; };
+		C2B65804195716A0009E374E /* NXMineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B65803195716A0009E374E /* NXMineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,10 +65,9 @@
 		C277503608015E4300343A62 /* NXMines.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NXMines.tiff; sourceTree = "<group>"; };
 		C277503708015E4300343A62 /* HighScores.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = HighScores.tiff; sourceTree = "<group>"; };
 		C277503B08015E9D00343A62 /* smilee.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = smilee.tiff; sourceTree = "<group>"; };
-		C277504108015EF200343A62 /* NXMineView.h */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.h; path = NXMineView.h; sourceTree = "<group>"; };
-		C277504208015EF200343A62 /* NXMineView.m */ = {isa = PBXFileReference; fileEncoding = 2; lastKnownFileType = sourcecode.c.objc; path = NXMineView.m; sourceTree = "<group>"; };
 		C27750760801609A00343A62 /* NXMines.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = NXMines.icns; sourceTree = "<group>"; };
 		C2B658011956DC6F009E374E /* MineButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineButton.swift; sourceTree = "<group>"; };
+		C2B65803195716A0009E374E /* NXMineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NXMineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +85,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C277504108015EF200343A62 /* NXMineView.h */,
-				C277504208015EF200343A62 /* NXMineView.m */,
 				C2411A291955FA1A00406B2E /* MyApp.swift */,
 				C2411A281955FA1900406B2E /* NXMines-Bridging-Header.h */,
 				C2B658011956DC6F009E374E /* MineButton.swift */,
+				C2B65803195716A0009E374E /* NXMineView.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -250,7 +247,6 @@
 				C277503908015E4400343A62 /* NXMines.tiff in Resources */,
 				C277503A08015E4400343A62 /* HighScores.tiff in Resources */,
 				C277503C08015E9D00343A62 /* smilee.tiff in Resources */,
-				C277504708015EF200343A62 /* NXMineView.h in Resources */,
 				C27750770801609A00343A62 /* NXMines.icns in Resources */,
 				C20C02F00E74F530006777F1 /* brick1.tiff in Resources */,
 				C20C02F10E74F530006777F1 /* brick2.tiff in Resources */,
@@ -270,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C277504808015EF200343A62 /* NXMineView.m in Sources */,
+				C2B65804195716A0009E374E /* NXMineView.swift in Sources */,
 				C2411A2A1955FA1A00406B2E /* MyApp.swift in Sources */,
 				C2B658021956DC6F009E374E /* MineButton.swift in Sources */,
 				C20BA46819560592001FC912 /* main.swift in Sources */,

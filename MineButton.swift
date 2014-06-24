@@ -10,6 +10,15 @@ import Cocoa
 
 class MineButton : NSButton
 {
+    var pos_x = 0;
+    var pos_y = 0;
+
+    var hasBomb = false
+    var flagged = false
+    var visited = false
+    
+    var bombsAround : UInt = 0
+    
     init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
 
@@ -18,6 +27,10 @@ class MineButton : NSButton
         self.image = NSImage(named: "brick.tiff")
         self.alternateImage = NSImage(named: "brickPushed.tiff")
         self.bordered = false;
+    }
+
+    override func mouseDown(theEvent: NSEvent!) {
+        (self.superview as NXMineView).buttonPushed(self)
     }
 
     override func rightMouseUp(theEvent: NSEvent!) {
