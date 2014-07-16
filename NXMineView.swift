@@ -42,7 +42,7 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
     // internal instance vars
-    var fieldsList : MineButton[] = MineButton[]()
+    var fieldsList : [MineButton] = [MineButton]()
     var gameMode : GameMode = .BEGINNER
     var isRunning = false
     var	timer : NSTimer?
@@ -145,7 +145,7 @@ class NXMineView : NSView, NSTextDelegate {
 
             self.window.display()
             
-            fieldsList = MineButton[]()
+            fieldsList = [MineButton]()
             for (var j=0; j<s.rows; j++) {
                  for (var i=0; i<s.cols; i++) {
                     let obj = MineButton(frame: NSRect(x: i*18, y:j*18, width:18, height: 18))
