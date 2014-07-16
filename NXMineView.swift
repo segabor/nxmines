@@ -45,10 +45,8 @@ class NXMineView : NSView, NSTextDelegate {
     var fieldsList : MineButton[] = MineButton[]()
     var gameMode : GameMode = .BEGINNER
     var isRunning = false
-    var timerOn = false // @deprecated
     var	timer : NSTimer?
     var bombs = 0
-    var flagsInBomb = 0
     var fw = 0, fh = 0
     var fc = 0
     // number of uncovered blocks
@@ -218,7 +216,7 @@ class NXMineView : NSView, NSTextDelegate {
                 field2.editable = true
                 
                 scorePanel.makeKeyAndOrderFront(self)
-                actTextField = field2
+                // actTextField = field2
             }
             
         } else {
@@ -245,43 +243,47 @@ class NXMineView : NSView, NSTextDelegate {
     let d = [ (-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1) ]
 
     func doUncover(px : Int,  _ py : Int) {
+        if let bomb = bombAt(px, py) {
+            doUncover(bomb)
+        }
+    }
+
+    func doUncover(bomb : MineButton) {
         // TODO
         // count bombs around actual position
-        if let bomb = bombAt(px, py) {
-            if bomb.visited || bomb.flagged {
-                return
-            }
+        if bomb.visited || bomb.flagged {
+            return
+        }
 
-            bomb.visited = true
-            maxspc--
+        // Phase one .. mark field
+        
+        // set bomb image accordingly
+        bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
+        bomb.enabled = false
+        
+        bomb.visited = true
+        maxspc--
 
-            // set bomb image accordingly
-            bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
-            bomb.enabled = false
-            
 
-            if bomb.bombsAround == 0 {
-                for r in d {
-                    if let b = bombAt(px+r.0, px+r.1) {
-                        if !b.visited && !b.flagged {
-                            doUncover(px+r.0, py+r.1)
-                        }
+        // Phase two, visit neighbor fields
+        if bomb.bombsAround == 0 {
+            for r in d {
+                if let neighbor = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
+                    if !neighbor.hasBomb {
+                        doUncover( neighbor )
                     }
                 }
             }
-            
         }
     }
+
 
     func doCalcBombs(bomb : MineButton) {
         // count surrounding bombs
         var count : UInt = 0
 
-        let px = bomb.pos_x
-        let py = bomb.pos_y
-
         for r in d {
-            if let b = bombAt(px+r.0, px+r.1) {
+            if let b = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
                 if b.hasBomb {
                     count++
                 }
@@ -384,10 +386,14 @@ class NXMineView : NSView, NSTextDelegate {
             } while fieldsList[ rnd ].hasBomb;
             
             fieldsList[ rnd ].hasBomb = true
-            doCalcBombs(fieldsList[ rnd ])
             // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
         }
 
+        for bomb in fieldsList {
+            doCalcBombs(bomb)
+        }
+        
+        
         self.window.autodisplay = true
 
         maxspc = fc // set max clickable field
@@ -417,9 +423,12 @@ class NXMineView : NSView, NSTextDelegate {
         // check clicked field
         if sender.hasBomb {
             // KA-BOOOM
-            for (var j=0; j<fh; j++) {
-                for (var i=0; i<fw; i++) {
-                    doUncover(i, j)
+            for bomb in fieldsList {
+                bomb.enabled = false
+                if bomb.hasBomb {
+                    bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
+                } else {
+                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
                 }
             }
 
@@ -434,7 +443,7 @@ class NXMineView : NSView, NSTextDelegate {
             // explore clicked area
             doUncover(sender.pos_x, sender.pos_y)
 
-            if maxspc == bombs {
+            if checkWinState() {
                 // Win !!!
                 endGame(true)
             } else if timer == .None {
@@ -476,15 +485,39 @@ class NXMineView : NSView, NSTextDelegate {
             bombDisplay.integerValue -= 1
         }
 
-        /* if maxspc == bombs {
+        if checkWinState() {
             // Win !!!
             endGame(true)
-        } */
+        }
     }
 
 
+    func checkWinState() -> Bool {
+        if maxspc == bombs {
+            return true
+        }
+        
+        if bombDisplay.integerValue == 0 {
+            // all flags set out
+            var k = 0
+            for b in fieldsList {
+                if b.flagged && b.hasBomb {
+                    k++
+                }
+            }
+            
+            if k == bombs {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+
     // MARK: NSTextDelegate protocol
     func textDidEndEditing(notification: NSNotification!) {
+        // FIXME ! Not invoked yet!
         if let target : NSTextField = notification.object as? NSTextField {
             target.editable = false
         }
