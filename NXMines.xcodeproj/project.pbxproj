@@ -52,7 +52,6 @@
 		C20C02ED0E74F530006777F1 /* brick6.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick6.tiff; sourceTree = "<group>"; };
 		C20C02EE0E74F530006777F1 /* brick7.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick7.tiff; sourceTree = "<group>"; };
 		C20C02EF0E74F530006777F1 /* brick8.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick8.tiff; sourceTree = "<group>"; };
-		C2411A281955FA1900406B2E /* NXMines-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NXMines-Bridging-Header.h"; sourceTree = "<group>"; };
 		C2411A291955FA1A00406B2E /* MyApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		C277501408015DE500343A62 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "English.lproj/NXMines-Cocoa.nib"; sourceTree = "<group>"; };
 		C277501808015E3500343A62 /* brick.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick.tiff; sourceTree = "<group>"; };
@@ -86,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				C2411A291955FA1A00406B2E /* MyApp.swift */,
-				C2411A281955FA1900406B2E /* NXMines-Bridging-Header.h */,
 				C2B658011956DC6F009E374E /* MineButton.swift */,
 				C2B65803195716A0009E374E /* NXMineView.swift */,
 			);
@@ -335,7 +333,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
-				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -356,7 +354,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
-				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -374,7 +372,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = NXMines;
-				SWIFT_OBJC_BRIDGING_HEADER = "NXMines-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
