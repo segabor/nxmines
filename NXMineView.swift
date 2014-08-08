@@ -10,20 +10,20 @@ import Cocoa
 
 class NXMineView : NSView, NSTextDelegate {
     // outlets
-    @IBOutlet var startButton : NSButton
+    @IBOutlet var startButton : NSButton?
 
-    @IBOutlet var bombDisplay : NSTextField
-    @IBOutlet var timeDisplay : NSTextField
+    @IBOutlet var bombDisplay : NSTextField?
+    @IBOutlet var timeDisplay : NSTextField?
 
-    @IBOutlet var scorePanel : NSPanel
+    @IBOutlet var scorePanel : NSPanel?
 
-    @IBOutlet var name0 : NSTextField
-    @IBOutlet var name1 : NSTextField
-    @IBOutlet var name2 : NSTextField
+    @IBOutlet var name0 : NSTextField?
+    @IBOutlet var name1 : NSTextField?
+    @IBOutlet var name2 : NSTextField?
 
-    @IBOutlet var time0 : NSTextField
-    @IBOutlet var time1 : NSTextField
-    @IBOutlet var time2 : NSTextField
+    @IBOutlet var time0 : NSTextField?
+    @IBOutlet var time1 : NSTextField?
+    @IBOutlet var time2 : NSTextField?
 
     let imageNames = [
         "brickPushed.tiff",
@@ -123,28 +123,36 @@ class NXMineView : NSView, NSTextDelegate {
         // initialize table
         if let s = setup[gameMode] {
             // set window title
-            self.window.title = s.title
+            self.window?.title = s.title
             
             // -- //
-            self.window.autodisplay = false
+            self.window?.autodisplay = false
 
             bombs = s.bombs
             (fw, fh, fc) = ( s.cols, s.rows, s.cols*s.rows)
-        
-            // resize window
-            var aRect = self.window.frame
-            aRect.size.width = 16 + CGFloat(fw)*18
-            aRect.size.height = 16 + 64 + CGFloat(fh)*18
-            self.window.setFrame(aRect, display: true)
 
-            // resize view size
-            aRect = self.frame
-            aRect.size.width = CGFloat(fw)*18
-            aRect.size.height = CGFloat(fh)*18
-            self.frame = aRect
+            // Resize everything
+            if let aRect = self.window?.frame {
+                // resize window
+                self.window?.setFrame(
+                    NSRect(
+                        origin: aRect.origin,
+                        size: CGSize(width: 16 + CGFloat(fw)*18, height: 16 + 64 + CGFloat(fh)*18)
+                    ),
+                    display: true
+                )
 
-            self.window.display()
+                // resize minefield view
+                self.frame = NSRect(
+                    origin: self.frame.origin,
+                    size: CGSize(width: CGFloat(fw)*18, height: CGFloat(fh)*18)
+                )
+            }
             
+            // enforce manual UI update
+            self.window?.display()
+
+
             fieldsList = [MineButton]()
             for (var j=0; j<s.rows; j++) {
                  for (var i=0; i<s.cols; i++) {
@@ -157,12 +165,14 @@ class NXMineView : NSView, NSTextDelegate {
                     // obj.action = Selector("buttonPushed:")
 
                     self.addSubview(obj)
-                    fieldsList += obj
+                    fieldsList.append(obj)
                 }
             }
             
-            self.window.autodisplay = true
-            self.window.display()
+            self.window?.display()
+
+            // re-enable auto UI update
+            self.window?.autodisplay = true
             
             // --- //
             
@@ -191,14 +201,14 @@ class NXMineView : NSView, NSTextDelegate {
             var field2 : NSTextField
             switch gameMode {
             case .BEGINNER:
-                field1 = time0
-                field2 = name0
+                field1 = time0!
+                field2 = name0!
             case .MEDIUM:
-                field1 = time1
-                field2 = name1
+                field1 = time1!
+                field2 = name1!
             case .EXPERT:
-                field1 = time2
-                field2 = name2
+                field1 = time2!
+                field2 = name2!
             }
             
             // better time achieved
@@ -215,7 +225,7 @@ class NXMineView : NSView, NSTextDelegate {
                 field1.integerValue = temp
                 field2.editable = true
                 
-                scorePanel.makeKeyAndOrderFront(self)
+                scorePanel?.makeKeyAndOrderFront(self)
                 // actTextField = field2
             }
             
@@ -236,7 +246,7 @@ class NXMineView : NSView, NSTextDelegate {
         if temp < 1000 {
             temp++
             
-            timeDisplay.integerValue = temp
+            timeDisplay?.integerValue = temp
         }
     }
 
@@ -301,29 +311,29 @@ class NXMineView : NSView, NSTextDelegate {
         let ud = NSUserDefaults.standardUserDefaults()
         
         if let v = ud.stringForKey("name0") {
-            name0.stringValue = ud.stringForKey("name0")
-            time0.integerValue = ud.integerForKey("time0")
+            name0?.stringValue = ud.stringForKey("name0")
+            time0?.integerValue = ud.integerForKey("time0")
         } else {
-            name0.stringValue = "Choler"
-            time0.integerValue = 999
+            name0?.stringValue = "Choler"
+            time0?.integerValue = 999
         }
 
     
         if let v = ud.stringForKey("name1") {
-            name1.stringValue = ud.stringForKey("name1")
-            time1.integerValue = ud.integerForKey("time1")
+            name1?.stringValue = ud.stringForKey("name1")
+            time1?.integerValue = ud.integerForKey("time1")
         } else {
-            name1.stringValue = "Sang"
-            time1.integerValue = 999
+            name1?.stringValue = "Sang"
+            time1?.integerValue = 999
         }
 
     
         if let v = ud.stringForKey("name2") {
-            name2.stringValue = ud.stringForKey("name2")
-            time2.integerValue = ud.integerForKey("time2")
+            name2?.stringValue = ud.stringForKey("name2")
+            time2?.integerValue = ud.integerForKey("time2")
         } else {
-            name2.stringValue = "Melan"
-            time2.integerValue = 999
+            name2?.stringValue = "Melan"
+            time2?.integerValue = 999
         }
     }
 
@@ -331,14 +341,26 @@ class NXMineView : NSView, NSTextDelegate {
     func saveScores() {
         let ud = NSUserDefaults.standardUserDefaults()
 
-        ud.setObject(name0.stringValue, forKey: "name0")
-        ud.setInteger(time0.integerValue, forKey: "time0")
+        if let val = name0?.stringValue {
+            ud.setObject(val, forKey: "name0")
+        }
+        if let val = time0?.integerValue {
+            ud.setInteger(val, forKey: "time0")
+        }
 
-        ud.setObject(name1.stringValue, forKey: "name1")
-        ud.setInteger(time1.integerValue, forKey: "time1")
+        if let val = name1?.stringValue {
+            ud.setObject(val, forKey: "name1")
+        }
+        if let val = time1?.integerValue {
+            ud.setInteger(val, forKey: "time1")
+        }
 
-        ud.setObject(name2.stringValue, forKey: "name2")
-        ud.setInteger(time2.integerValue, forKey: "time2")
+        if let val = name2?.stringValue {
+            ud.setObject(val, forKey: "name2")
+        }
+        if let val = time2?.integerValue {
+            ud.setInteger(val, forKey: "time2")
+        }
     }
 
 
@@ -365,7 +387,7 @@ class NXMineView : NSView, NSTextDelegate {
             timer = nil
         }
 
-        self.window.autodisplay = false
+        self.window?.autodisplay = false
 
         // reset mine field
         for mine in fieldsList {
@@ -394,15 +416,17 @@ class NXMineView : NSView, NSTextDelegate {
         }
         
         
-        self.window.autodisplay = true
+        self.window?.autodisplay = true
 
         maxspc = fc // set max clickable field
         temp = 0; // reset time counter
+
+        // FIXME: is this field is used anymore?
         actTextField = nil
-        
+
         // update displays
-        bombDisplay.integerValue = bombs
-        timeDisplay.integerValue = 0
+        bombDisplay?.integerValue = bombs
+        timeDisplay?.integerValue = 0
 
         // let it go
         isRunning = true
@@ -476,13 +500,13 @@ class NXMineView : NSView, NSTextDelegate {
             sender.enabled = true
             sender.image = NSImage(named:"brick.tiff")
             
-            bombDisplay.integerValue += 1
+            bombDisplay?.integerValue += 1
         } else {
             sender.flagged = true
             sender.enabled = false
             sender.image = NSImage(named:"brickAndFlag.tiff")
 
-            bombDisplay.integerValue -= 1
+            bombDisplay?.integerValue -= 1
         }
 
         if checkWinState() {
@@ -497,7 +521,7 @@ class NXMineView : NSView, NSTextDelegate {
             return true
         }
         
-        if bombDisplay.integerValue == 0 {
+        if bombDisplay?.integerValue == 0 {
             // all flags set out
             var k = 0
             for b in fieldsList {

@@ -18,8 +18,12 @@ class MineButton : NSButton
     var visited = false
     
     var bombsAround : UInt = 0
-    
-    init(frame frameRect: NSRect) {
+
+    required init(coder: NSCoder!) {
+        super.init(coder: coder)
+    }
+
+    override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
 
         // decorate button
