@@ -82,7 +82,7 @@ class NXMineView : NSView, NSTextDelegate {
     
 
     
-    // MARK Actions
+    // MARK: == Actions ==
     
     @IBAction func setBeginner(sender: AnyObject) {
         initGame(GameMode.BEGINNER)
@@ -253,14 +253,13 @@ class NXMineView : NSView, NSTextDelegate {
     let d = [ (-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1) ]
 
     func doUncover(px : Int,  _ py : Int) {
-        if let bomb = bombAt(px, py) {
+        if let bomb = bombAtX(px, Y: py) {
             doUncover(bomb)
         }
     }
 
     func doUncover(bomb : MineButton) {
-        // TODO
-        // count bombs around actual position
+        // TODO: count bombs around actual position
         if bomb.visited || bomb.flagged {
             return
         }
@@ -278,7 +277,7 @@ class NXMineView : NSView, NSTextDelegate {
         // Phase two, visit neighbor fields
         if bomb.bombsAround == 0 {
             for r in d {
-                if let neighbor = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
+                if let neighbor = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
                     if !neighbor.hasBomb {
                         doUncover( neighbor )
                     }
@@ -293,20 +292,18 @@ class NXMineView : NSView, NSTextDelegate {
         var count : UInt = 0
 
         for r in d {
-            if let b = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
+            if let b = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
                 if b.hasBomb {
                     count++
                 }
             }
         }
         bomb.bombsAround = count
-
-        // set bomb image accordingly
-        // bomb.image = NSImage(named:imageNames[Int(count)])
-        // bomb.enabled = false
     }
-    
-    // Scores
+
+
+
+    // MARK: Scores
     func loadScores() {
         let ud = NSUserDefaults.standardUserDefaults()
         
@@ -365,13 +362,13 @@ class NXMineView : NSView, NSTextDelegate {
 
 
     func resetScores() {
-        // TODO
+        // TODO: complete function
     }
     
     
     
-    // return bomb at position
-    func bombAt(x : Int, _ y : Int) -> MineButton? {
+    // Find and return bomb at position
+    func bombAtX(x : Int, Y y : Int) -> MineButton? {
         if x >= 0 && x < fw && y >= 0 && y < fh {
             return fieldsList[x+(y*fw)]
         }
@@ -435,7 +432,6 @@ class NXMineView : NSView, NSTextDelegate {
     
     
     @IBAction func buttonPushed(sender:MineButton) {
-        // TODO
         if !isRunning {
             return
         }
@@ -485,7 +481,6 @@ class NXMineView : NSView, NSTextDelegate {
 
 
     @IBAction func rightButtonPushed(sender:MineButton) {
-        // TODO
         if !isRunning {
             return
         }
@@ -539,9 +534,9 @@ class NXMineView : NSView, NSTextDelegate {
     }
     
 
-    // MARK: NSTextDelegate protocol
+    // MARK: == NSTextDelegate protocol ==
     func textDidEndEditing(notification: NSNotification!) {
-        // FIXME ! Not invoked yet!
+        // FIXME: never invoked!
         if let target : NSTextField = notification.object as? NSTextField {
             target.editable = false
         }
