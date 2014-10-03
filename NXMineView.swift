@@ -311,7 +311,7 @@ class NXMineView : NSView, NSTextDelegate {
         let ud = NSUserDefaults.standardUserDefaults()
         
         if let v = ud.stringForKey("name0") {
-            name0?.stringValue = ud.stringForKey("name0")
+            name0?.stringValue = v
             time0?.integerValue = ud.integerForKey("time0")
         } else {
             name0?.stringValue = "Choler"
@@ -320,7 +320,7 @@ class NXMineView : NSView, NSTextDelegate {
 
     
         if let v = ud.stringForKey("name1") {
-            name1?.stringValue = ud.stringForKey("name1")
+            name1?.stringValue = v
             time1?.integerValue = ud.integerForKey("time1")
         } else {
             name1?.stringValue = "Sang"
@@ -329,7 +329,7 @@ class NXMineView : NSView, NSTextDelegate {
 
     
         if let v = ud.stringForKey("name2") {
-            name2?.stringValue = ud.stringForKey("name2")
+            name2?.stringValue = v
             time2?.integerValue = ud.integerForKey("time2")
         } else {
             name2?.stringValue = "Melan"
