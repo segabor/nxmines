@@ -82,7 +82,7 @@ class NXMineView : NSView, NSTextDelegate {
     
 
     
-    // MARK Actions
+    // MARK: == Actions ==
     
     @IBAction func setBeginner(sender: AnyObject) {
         initGame(GameMode.BEGINNER)
@@ -96,16 +96,155 @@ class NXMineView : NSView, NSTextDelegate {
         initGame(GameMode.EXPERT)
     }
 
-    let setup = [
-        // mode -> title, width, height, n of bombs to hide
-        GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
-        GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
-        GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
-    ]
+    
+    @IBAction func startGame(sender:AnyObject?) {
+        
+        // kill timer
+        if let t = timer {
+            t.invalidate()
+            timer = nil
+        }
+        
+        self.window?.autodisplay = false
+        
+        // reset mine field
+        for mine in fieldsList {
+            // tag = 0
+            mine.hasBomb = false
+            mine.flagged = false
+            mine.visited = false
+            
+            mine.enabled = true
+            mine.image = NSImage(named: "brick.tiff")
+        }
+        
+        // distribute bombs
+        var rnd = 0
+        for (var i=0; i<bombs ; i++) {
+            do {
+                rnd = Int( arc4random_uniform( UInt32(fc) ) );
+            } while fieldsList[ rnd ].hasBomb;
+            
+            fieldsList[ rnd ].hasBomb = true
+            // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
+        }
+        
+        for bomb in fieldsList {
+            doCalcBombs(bomb)
+        }
+        
+        
+        self.window?.autodisplay = true
+        
+        maxspc = fc // set max clickable field
+        temp = 0; // reset time counter
+        
+        // FIXME: is this field is used anymore?
+        actTextField = nil
+        
+        // update displays
+        bombDisplay?.integerValue = bombs
+        timeDisplay?.integerValue = 0
+        
+        // let it go
+        isRunning = true
+        
+    }
+    
+    
+    // Left Click Handler
+    @IBAction func buttonPushed(sender:MineButton) {
+        if !isRunning {
+            return
+        }
+        
+        if sender.flagged || sender.visited {
+            return
+        }
+        
+        // check clicked field
+        if sender.hasBomb {
+            // KA-BOOOM
+            for bomb in fieldsList {
+                bomb.enabled = false
+                if bomb.hasBomb {
+                    bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
+                } else {
+                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
+                }
+            }
+            
+            // mark the clicked field as false
+            sender.image = NSImage(named: "brickPushedAndFalseBomb.tiff")
+            NSBeep()
+            
+            // lose
+            endGame(false)
+            
+        } else {
+            // explore clicked area
+            doUncover(sender.pos_x, sender.pos_y)
+            
+            if checkWinState() {
+                // Win !!!
+                endGame(true)
+            } else if timer == .None {
+                timer = NSTimer.scheduledTimerWithTimeInterval(
+                    1,
+                    target: self,
+                    selector: "tick:",
+                    userInfo: nil,
+                    repeats: true)
+                NSBeep()
+            }
+        }
+    }
+    
+    
+    // Right Click Handler
+    @IBAction func rightButtonPushed(sender:MineButton) {
+        if !isRunning {
+            return
+        }
+        
+        if sender.visited {
+            return
+        }
+        
+        // swap flag
+        if sender.flagged {
+            sender.flagged = false
+            sender.enabled = true
+            sender.image = NSImage(named:"brick.tiff")
+            
+            bombDisplay?.integerValue += 1
+        } else {
+            sender.flagged = true
+            sender.enabled = false
+            sender.image = NSImage(named:"brickAndFlag.tiff")
+            
+            bombDisplay?.integerValue -= 1
+        }
+        
+        if checkWinState() {
+            // Win !!!
+            endGame(true)
+        }
+    }
 
 
 
+    
+    
     func initGame(mode : GameMode) {
+        let setup = [
+            // mode -> title, width, height, n of bombs to hide
+            GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
+            GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
+            GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
+        ]
+
+        
         if isRunning {
             isRunning = false
         }
@@ -181,11 +320,9 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
 
+    // @private
     func endGame(win: Bool) {
-        if !isRunning {
-            return
-        }
-        
+        // terminate current game session
         isRunning = false
         
         // stop timer
@@ -195,7 +332,7 @@ class NXMineView : NSView, NSTextDelegate {
         }
         
         
-        
+        // status = win ?
         if win {
             var field1 : NSTextField
             var field2 : NSTextField
@@ -230,16 +367,10 @@ class NXMineView : NSView, NSTextDelegate {
             }
             
         } else {
-            let panel = NSAlert()
-            
-            panel.messageText = "You Blasted!"
-            panel.informativeText = "Hmmm, you found a lost mine..."
-            panel.addButtonWithTitle("Try Again")
-
-            panel.runModal()
+            // Player failed, do nothings
         }
     }
-    
+
 
     // NSTimer callback
     func tick(aTimer : NSTimer) {
@@ -253,14 +384,13 @@ class NXMineView : NSView, NSTextDelegate {
     let d = [ (-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1) ]
 
     func doUncover(px : Int,  _ py : Int) {
-        if let bomb = bombAt(px, py) {
+        if let bomb = bombAtX(px, Y: py) {
             doUncover(bomb)
         }
     }
 
     func doUncover(bomb : MineButton) {
-        // TODO
-        // count bombs around actual position
+        // TODO: count bombs around actual position
         if bomb.visited || bomb.flagged {
             return
         }
@@ -278,7 +408,7 @@ class NXMineView : NSView, NSTextDelegate {
         // Phase two, visit neighbor fields
         if bomb.bombsAround == 0 {
             for r in d {
-                if let neighbor = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
+                if let neighbor = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
                     if !neighbor.hasBomb {
                         doUncover( neighbor )
                     }
@@ -293,20 +423,18 @@ class NXMineView : NSView, NSTextDelegate {
         var count : UInt = 0
 
         for r in d {
-            if let b = bombAt(bomb.pos_x+r.0, bomb.pos_y+r.1) {
+            if let b = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
                 if b.hasBomb {
                     count++
                 }
             }
         }
         bomb.bombsAround = count
-
-        // set bomb image accordingly
-        // bomb.image = NSImage(named:imageNames[Int(count)])
-        // bomb.enabled = false
     }
-    
-    // Scores
+
+
+
+    // MARK: Scores
     func loadScores() {
         let ud = NSUserDefaults.standardUserDefaults()
         
@@ -365,13 +493,13 @@ class NXMineView : NSView, NSTextDelegate {
 
 
     func resetScores() {
-        // TODO
+        // TODO: complete function
     }
     
     
     
-    // return bomb at position
-    func bombAt(x : Int, _ y : Int) -> MineButton? {
+    // Find and return bomb at position
+    func bombAtX(x : Int, Y y : Int) -> MineButton? {
         if x >= 0 && x < fw && y >= 0 && y < fh {
             return fieldsList[x+(y*fw)]
         }
@@ -379,141 +507,6 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
 
-    @IBAction func startGame(sender:AnyObject?) {
-
-        // kill timer
-        if let t = timer {
-            t.invalidate()
-            timer = nil
-        }
-
-        self.window?.autodisplay = false
-
-        // reset mine field
-        for mine in fieldsList {
-            // tag = 0
-            mine.hasBomb = false
-            mine.flagged = false
-            mine.visited = false
-            
-            mine.enabled = true
-            mine.image = NSImage(named: "brick.tiff")
-        }
-        
-        // distribute bombs
-        var rnd = 0
-        for (var i=0; i<bombs ; i++) {
-            do {
-                rnd = Int( arc4random_uniform( UInt32(fc) ) );
-            } while fieldsList[ rnd ].hasBomb;
-            
-            fieldsList[ rnd ].hasBomb = true
-            // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
-        }
-
-        for bomb in fieldsList {
-            doCalcBombs(bomb)
-        }
-        
-        
-        self.window?.autodisplay = true
-
-        maxspc = fc // set max clickable field
-        temp = 0; // reset time counter
-
-        // FIXME: is this field is used anymore?
-        actTextField = nil
-
-        // update displays
-        bombDisplay?.integerValue = bombs
-        timeDisplay?.integerValue = 0
-
-        // let it go
-        isRunning = true
-        
-    }
-    
-    
-    @IBAction func buttonPushed(sender:MineButton) {
-        // TODO
-        if !isRunning {
-            return
-        }
-
-        if sender.flagged || sender.visited {
-            return
-        }
-
-        // check clicked field
-        if sender.hasBomb {
-            // KA-BOOOM
-            for bomb in fieldsList {
-                bomb.enabled = false
-                if bomb.hasBomb {
-                    bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
-                } else {
-                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
-                }
-            }
-
-            // mark the clicked field as false
-            sender.image = NSImage(named: "brickPushedAndFalseBomb.tiff")
-            NSBeep()
-
-            // lose
-            endGame(false)
-            
-        } else {
-            // explore clicked area
-            doUncover(sender.pos_x, sender.pos_y)
-
-            if checkWinState() {
-                // Win !!!
-                endGame(true)
-            } else if timer == .None {
-                timer = NSTimer.scheduledTimerWithTimeInterval(
-                    1,
-                    target: self,
-                    selector: "tick:",
-                    userInfo: nil,
-                    repeats: true)
-                NSBeep()
-            }
-        }
-    }
-
-
-
-    @IBAction func rightButtonPushed(sender:MineButton) {
-        // TODO
-        if !isRunning {
-            return
-        }
-        
-        if sender.visited {
-            return
-        }
-        
-        // swap flag
-        if sender.flagged {
-            sender.flagged = false
-            sender.enabled = true
-            sender.image = NSImage(named:"brick.tiff")
-            
-            bombDisplay?.integerValue += 1
-        } else {
-            sender.flagged = true
-            sender.enabled = false
-            sender.image = NSImage(named:"brickAndFlag.tiff")
-
-            bombDisplay?.integerValue -= 1
-        }
-
-        if checkWinState() {
-            // Win !!!
-            endGame(true)
-        }
-    }
 
 
     func checkWinState() -> Bool {
@@ -539,9 +532,9 @@ class NXMineView : NSView, NSTextDelegate {
     }
     
 
-    // MARK: NSTextDelegate protocol
+    // MARK: == NSTextDelegate protocol ==
     func textDidEndEditing(notification: NSNotification!) {
-        // FIXME ! Not invoked yet!
+        // FIXME: never invoked!
         if let target : NSTextField = notification.object as? NSTextField {
             target.editable = false
         }
