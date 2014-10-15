@@ -19,10 +19,10 @@ class MineButton : NSButton
     
     var bombsAround : UInt = 0
 
-    required init(coder: NSCoder!) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
 
@@ -30,14 +30,14 @@ class MineButton : NSButton
         setButtonType(NSButtonType.MomentaryChangeButton)
         self.image = NSImage(named: "brick.tiff")
         self.alternateImage = NSImage(named: "brickPushed.tiff")
-        self.bordered = false;
+        self.bordered = false
     }
 
-    override func mouseDown(theEvent: NSEvent!) {
+    override func mouseDown(theEvent: NSEvent) {
         (self.superview as NXMineView).buttonPushed(self)
     }
 
-    override func rightMouseUp(theEvent: NSEvent!) {
+    override func rightMouseUp(theEvent: NSEvent) {
         (self.superview as NXMineView).rightButtonPushed(self)
     }
 }

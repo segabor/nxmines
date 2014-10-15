@@ -96,16 +96,155 @@ class NXMineView : NSView, NSTextDelegate {
         initGame(GameMode.EXPERT)
     }
 
-    let setup = [
-        // mode -> title, width, height, n of bombs to hide
-        GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
-        GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
-        GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
-    ]
+    
+    @IBAction func startGame(sender:AnyObject?) {
+        
+        // kill timer
+        if let t = timer {
+            t.invalidate()
+            timer = nil
+        }
+        
+        self.window?.autodisplay = false
+        
+        // reset mine field
+        for mine in fieldsList {
+            // tag = 0
+            mine.hasBomb = false
+            mine.flagged = false
+            mine.visited = false
+            
+            mine.enabled = true
+            mine.image = NSImage(named: "brick.tiff")
+        }
+        
+        // distribute bombs
+        var rnd = 0
+        for (var i=0; i<bombs ; i++) {
+            do {
+                rnd = Int( arc4random_uniform( UInt32(fc) ) );
+            } while fieldsList[ rnd ].hasBomb;
+            
+            fieldsList[ rnd ].hasBomb = true
+            // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
+        }
+        
+        for bomb in fieldsList {
+            doCalcBombs(bomb)
+        }
+        
+        
+        self.window?.autodisplay = true
+        
+        maxspc = fc // set max clickable field
+        temp = 0; // reset time counter
+        
+        // FIXME: is this field is used anymore?
+        actTextField = nil
+        
+        // update displays
+        bombDisplay?.integerValue = bombs
+        timeDisplay?.integerValue = 0
+        
+        // let it go
+        isRunning = true
+        
+    }
+    
+    
+    // Left Click Handler
+    @IBAction func buttonPushed(sender:MineButton) {
+        if !isRunning {
+            return
+        }
+        
+        if sender.flagged || sender.visited {
+            return
+        }
+        
+        // check clicked field
+        if sender.hasBomb {
+            // KA-BOOOM
+            for bomb in fieldsList {
+                bomb.enabled = false
+                if bomb.hasBomb {
+                    bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
+                } else {
+                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
+                }
+            }
+            
+            // mark the clicked field as false
+            sender.image = NSImage(named: "brickPushedAndFalseBomb.tiff")
+            NSBeep()
+            
+            // lose
+            endGame(false)
+            
+        } else {
+            // explore clicked area
+            doUncover(sender.pos_x, sender.pos_y)
+            
+            if checkWinState() {
+                // Win !!!
+                endGame(true)
+            } else if timer == .None {
+                timer = NSTimer.scheduledTimerWithTimeInterval(
+                    1,
+                    target: self,
+                    selector: "tick:",
+                    userInfo: nil,
+                    repeats: true)
+                NSBeep()
+            }
+        }
+    }
+    
+    
+    // Right Click Handler
+    @IBAction func rightButtonPushed(sender:MineButton) {
+        if !isRunning {
+            return
+        }
+        
+        if sender.visited {
+            return
+        }
+        
+        // swap flag
+        if sender.flagged {
+            sender.flagged = false
+            sender.enabled = true
+            sender.image = NSImage(named:"brick.tiff")
+            
+            bombDisplay?.integerValue += 1
+        } else {
+            sender.flagged = true
+            sender.enabled = false
+            sender.image = NSImage(named:"brickAndFlag.tiff")
+            
+            bombDisplay?.integerValue -= 1
+        }
+        
+        if checkWinState() {
+            // Win !!!
+            endGame(true)
+        }
+    }
 
 
 
+    
+    
     func initGame(mode : GameMode) {
+        let setup = [
+            // mode -> title, width, height, n of bombs to hide
+            GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
+            GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
+            GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
+        ]
+
+        
         if isRunning {
             isRunning = false
         }
@@ -181,11 +320,9 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
 
+    // @private
     func endGame(win: Bool) {
-        if !isRunning {
-            return
-        }
-        
+        // terminate current game session
         isRunning = false
         
         // stop timer
@@ -195,7 +332,7 @@ class NXMineView : NSView, NSTextDelegate {
         }
         
         
-        
+        // status = win ?
         if win {
             var field1 : NSTextField
             var field2 : NSTextField
@@ -230,16 +367,10 @@ class NXMineView : NSView, NSTextDelegate {
             }
             
         } else {
-            let panel = NSAlert()
-            
-            panel.messageText = "You Blasted!"
-            panel.informativeText = "Hmmm, you found a lost mine..."
-            panel.addButtonWithTitle("Try Again")
-
-            panel.runModal()
+            // Player failed, do nothings
         }
     }
-    
+
 
     // NSTimer callback
     func tick(aTimer : NSTimer) {
@@ -308,7 +439,7 @@ class NXMineView : NSView, NSTextDelegate {
         let ud = NSUserDefaults.standardUserDefaults()
         
         if let v = ud.stringForKey("name0") {
-            name0?.stringValue = ud.stringForKey("name0")
+            name0?.stringValue = v
             time0?.integerValue = ud.integerForKey("time0")
         } else {
             name0?.stringValue = "Choler"
@@ -317,7 +448,7 @@ class NXMineView : NSView, NSTextDelegate {
 
     
         if let v = ud.stringForKey("name1") {
-            name1?.stringValue = ud.stringForKey("name1")
+            name1?.stringValue = v
             time1?.integerValue = ud.integerForKey("time1")
         } else {
             name1?.stringValue = "Sang"
@@ -326,7 +457,7 @@ class NXMineView : NSView, NSTextDelegate {
 
     
         if let v = ud.stringForKey("name2") {
-            name2?.stringValue = ud.stringForKey("name2")
+            name2?.stringValue = v
             time2?.integerValue = ud.integerForKey("time2")
         } else {
             name2?.stringValue = "Melan"
@@ -376,139 +507,6 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
 
-    @IBAction func startGame(sender:AnyObject?) {
-
-        // kill timer
-        if let t = timer {
-            t.invalidate()
-            timer = nil
-        }
-
-        self.window?.autodisplay = false
-
-        // reset mine field
-        for mine in fieldsList {
-            // tag = 0
-            mine.hasBomb = false
-            mine.flagged = false
-            mine.visited = false
-            
-            mine.enabled = true
-            mine.image = NSImage(named: "brick.tiff")
-        }
-        
-        // distribute bombs
-        var rnd = 0
-        for (var i=0; i<bombs ; i++) {
-            do {
-                rnd = Int( arc4random_uniform( UInt32(fc) ) );
-            } while fieldsList[ rnd ].hasBomb;
-            
-            fieldsList[ rnd ].hasBomb = true
-            // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
-        }
-
-        for bomb in fieldsList {
-            doCalcBombs(bomb)
-        }
-        
-        
-        self.window?.autodisplay = true
-
-        maxspc = fc // set max clickable field
-        temp = 0; // reset time counter
-
-        // FIXME: is this field is used anymore?
-        actTextField = nil
-
-        // update displays
-        bombDisplay?.integerValue = bombs
-        timeDisplay?.integerValue = 0
-
-        // let it go
-        isRunning = true
-        
-    }
-    
-    
-    @IBAction func buttonPushed(sender:MineButton) {
-        if !isRunning {
-            return
-        }
-
-        if sender.flagged || sender.visited {
-            return
-        }
-
-        // check clicked field
-        if sender.hasBomb {
-            // KA-BOOOM
-            for bomb in fieldsList {
-                bomb.enabled = false
-                if bomb.hasBomb {
-                    bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
-                } else {
-                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
-                }
-            }
-
-            // mark the clicked field as false
-            sender.image = NSImage(named: "brickPushedAndFalseBomb.tiff")
-            NSBeep()
-
-            // lose
-            endGame(false)
-            
-        } else {
-            // explore clicked area
-            doUncover(sender.pos_x, sender.pos_y)
-
-            if checkWinState() {
-                // Win !!!
-                endGame(true)
-            } else if timer == .None {
-                timer = NSTimer.scheduledTimerWithTimeInterval(
-                    1,
-                    target: self,
-                    selector: "tick:",
-                    userInfo: nil,
-                    repeats: true)
-                NSBeep()
-            }
-        }
-    }
-
-
-
-    @IBAction func rightButtonPushed(sender:MineButton) {
-        if !isRunning {
-            return
-        }
-        
-        if sender.visited {
-            return
-        }
-        
-        // swap flag
-        if sender.flagged {
-            sender.flagged = false
-            sender.enabled = true
-            sender.image = NSImage(named:"brick.tiff")
-            
-            bombDisplay?.integerValue += 1
-        } else {
-            sender.flagged = true
-            sender.enabled = false
-            sender.image = NSImage(named:"brickAndFlag.tiff")
-
-            bombDisplay?.integerValue -= 1
-        }
-
-        if checkWinState() {
-            // Win !!!
-            endGame(true)
-        }
-    }
 
 
     func checkWinState() -> Bool {
