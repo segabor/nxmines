@@ -1,0 +1,40 @@
+MyApp = {
+    ACTIONS = {
+	appDidInit:;
+	windowWillClose:;
+    };
+    OUTLETS = {
+	gameWindow;
+	mineView;
+    };
+    SUPERCLASS = Application;
+};
+FirstResponder = {
+    ACTIONS = {
+    };
+    SUPERCLASS = Object;
+};
+NXMineView = {
+    ACTIONS = {
+	buttonPushed:;
+	setMedium:;
+	startGame:;
+	postInit:;
+	setBeginner:;
+	resetScores:;
+	setExpert:;
+    };
+    OUTLETS = {
+	name2;
+	scorePanel;
+	name1;
+	name0;
+	timeDisplay;
+	time0;
+	time1;
+	time2;
+	startButton;
+	bombDisplay;
+    };
+    SUPERCLASS = View;
+};

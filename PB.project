@@ -1,0 +1,25 @@
+INSTALLDIR = "$(HOME)/Apps";
+APPICON = NXMines.tiff;
+GENERATEMAIN = YES;
+DOCICONFILES = ();
+FILESTABLE = {
+    OTHER_LIBS = (Media_s, NeXT_s);
+    CLASSES = (MyApp.m, NXMineView.m);
+    OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble);
+    INTERFACES = (NXMines.nib);
+    H_FILES = (MyApp.h, NXMineView.h);
+    IMAGES = (brick.tiff, brick1.tiff, brick2.tiff, brick3.tiff, brick4.tiff, brick5.tiff, brick6.tiff, brick7.tiff, brick8.tiff, brickAndFlag.tiff, brickPushed.tiff, brickPushedAndBomb.tiff, brickPushedAndFalseBomb.tiff, brickPushedAndNoBomb.tiff, HighScores.tiff, NXMines5.tiff, smilee.tiff);
+    OTHER_LINKED = ();
+    M_FILES = (NXMines_main.m);
+};
+APPCLASS = MyApp;
+MAINNIB = NXMines;
+DOCEXTENSIONS = ();
+PROJECTTYPE = Application;
+PROJECTVERSION = 1.1;
+LOCALIZABLE_FILES = {
+    NXMines.nib;
+};
+PROJECTNAME = NXMines;
+SYSTEMEXTENSIONS = ();
+LANGUAGE = English;
