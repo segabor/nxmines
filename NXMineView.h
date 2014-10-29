@@ -26,7 +26,7 @@
 
 // void timer(DPSTimedEntry tEntry, double now, void *udata);
 
-@interface NXMineView : NSView
+@interface NXMineView : NSView<NSFileManagerDelegate>
 {
     id	bombDisplay;
     id	startButton;

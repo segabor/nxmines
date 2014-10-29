@@ -261,16 +261,40 @@ NSString *iNumbers[] = {
 				break;
 		}	
 		if (temp <= [tm intValue]) {
-			NSRunAlertPanel(@"You Won!!", @"... and you made best time!", @"OK", nil, nil);
-			[tm setIntValue: temp];
+            NSAlert *panel = [[NSAlert alloc] init];
+            panel.messageText = @"You Won!";
+            panel.informativeText = @"... and you made best time!";
+            [panel addButtonWithTitle:@"OK"];
+            
+            [panel beginSheetModalForWindow: self.window completionHandler: nil];
+
+            [panel autorelease];
+            
+            [tm setIntValue: temp];
 			[nm setEditable: YES];
 			//	    [nm selectAll: self];
 			[scorePanel makeKeyAndOrderFront: self];
 			actTextField = nm;	    
-		} else
-			NSRunAlertPanel(@"You Won!", @"Wow, you made it!", @"OK", nil, nil);
-    } else
-	NSRunAlertPanel(@"You Blasted!", @"Hmmm, you found a lost mine...",	@"Try Again", nil, nil);
+        } else {
+            NSAlert *panel = [[NSAlert alloc] init];
+            panel.messageText = @"You Won!";
+            panel.informativeText = @"Wow, you made it!";
+            [panel addButtonWithTitle:@"OK"];
+            
+            [panel beginSheetModalForWindow: self.window completionHandler: nil];
+            
+            [panel autorelease];
+        }
+    } else {
+        NSAlert *panel = [[NSAlert alloc] init];
+        panel.messageText = @"You Blasted!";
+        panel.informativeText = @"Hmmm, you found a lost mine...";
+        [panel addButtonWithTitle:@"Try Again"];
+        
+        [panel beginSheetModalForWindow: self.window completionHandler: nil];
+        
+        [panel autorelease];
+    }
     return self;
 }
 
