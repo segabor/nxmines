@@ -2,7 +2,7 @@
 //  NXMines_main.m
 //  NXMines
 //
-//  Created by G√°bor Sebesty√©n on 2005.04.04..
+//  Created by G÷bor Sebesty›n on 2005.04.04..
 //  Copyright __MyCompanyName__ 2005. All rights reserved.
 //
 
