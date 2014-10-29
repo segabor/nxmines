@@ -14,14 +14,14 @@
 
 -(id) initWithFrame:(NSRect)frameRect
 {
-	[super initWithFrame: frameRect];
-
-	// set default behaviour
-	[self setButtonType: NSMomentaryChangeButton];
-	[self setImage: [NSImage imageNamed: @"brick.tiff"]];
-	[self setAlternateImage: [NSImage imageNamed: @"brickPushed.tiff"]];
-	[self setBordered: NO];
-	
+	self = [super initWithFrame: frameRect];
+    if (self) {
+        // set default behaviour
+        [self setButtonType: NSMomentaryChangeButton];
+        [self setImage: [NSImage imageNamed: @"brick.tiff"]];
+        [self setAlternateImage: [NSImage imageNamed: @"brickPushed.tiff"]];
+        [self setBordered: NO];
+    }
 	return self;
 }
 
