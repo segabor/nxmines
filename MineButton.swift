@@ -34,10 +34,10 @@ class MineButton : NSButton
     }
 
     override func mouseDown(theEvent: NSEvent) {
-        (self.superview as NXMineView).buttonPushed(self)
+        (self.superview as! NXMineView).buttonPushed(self)
     }
 
     override func rightMouseUp(theEvent: NSEvent) {
-        (self.superview as NXMineView).rightButtonPushed(self)
+        (self.superview as! NXMineView).rightButtonPushed(self)
     }
 }

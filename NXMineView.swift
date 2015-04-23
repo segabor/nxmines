@@ -533,7 +533,7 @@ class NXMineView : NSView, NSTextDelegate {
     
 
     // MARK: == NSTextDelegate protocol ==
-    func textDidEndEditing(notification: NSNotification!) {
+    func textDidEndEditing(notification: NSNotification) {
         // FIXME: never invoked!
         if let target : NSTextField = notification.object as? NSTextField {
             target.editable = false
