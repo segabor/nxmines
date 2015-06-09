@@ -121,7 +121,7 @@ class NXMineView : NSView, NSTextDelegate {
         // distribute bombs
         var rnd = 0
         for (var i=0; i<bombs ; i++) {
-            do {
+            repeat {
                 rnd = Int( arc4random_uniform( UInt32(fc) ) );
             } while fieldsList[ rnd ].hasBomb;
             

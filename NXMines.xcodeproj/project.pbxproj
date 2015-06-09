@@ -210,7 +210,8 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = C20C02DF0E74F42D006777F1 /* Build configuration list for PBXProject "NXMines" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -296,7 +297,9 @@
 		C20C02D90E74F42C006777F1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Development;
 		};
@@ -329,6 +332,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.segabor.NXMines;
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -350,6 +354,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.segabor.NXMines;
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				WRAPPER_EXTENSION = app;
@@ -368,6 +373,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.segabor.NXMines;
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				WRAPPER_EXTENSION = app;
