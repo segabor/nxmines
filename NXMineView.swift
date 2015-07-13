@@ -25,7 +25,7 @@ class NXMineView : NSView, NSTextDelegate {
     @IBOutlet var time1 : NSTextField?
     @IBOutlet var time2 : NSTextField?
 
-    let imageNames = [
+    static let IMAGE_NAMES = [
         "brickPushed.tiff",
         "brick1.tiff",
         "brick2.tiff",
@@ -40,18 +40,40 @@ class NXMineView : NSView, NSTextDelegate {
     enum GameMode {
         case BEGINNER, MEDIUM, EXPERT
     }
+    
+
+    static let SETUP = [
+        // mode -> title, width, height, n of bombs to hide
+        GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
+        GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
+        GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
+    ]
+
+    struct GameSetup {
+        var mode : GameMode
+        var fh : UInt
+        var fw : UInt
+        var bombs: UInt
+        
+        var fc : UInt {
+            get {
+                return fh*fw
+            }
+        }
+    }
+
 
     // internal instance vars
-    var fieldsList : [MineButton] = [MineButton]()
-    var gameMode : GameMode = .BEGINNER
-    var isRunning = false
-    var	timer : NSTimer?
-    var bombs = 0
-    var fw = 0, fh = 0
-    var fc = 0
+    var fieldsList = [MineButton]()
+    var game : GameSetup?
     // number of uncovered blocks
-    var maxspc = 0
+    var maxspc : UInt = 0
+    
+    var isRunning = false
+
+    var	timer : NSTimer?
     var temp = 0
+
     
     var actTextField : NSTextField?
     
@@ -120,15 +142,15 @@ class NXMineView : NSView, NSTextDelegate {
         
         // distribute bombs
         var rnd = 0
-        for (var i=0; i<bombs ; i++) {
+        for _ in 0..<game!.bombs {
             repeat {
-                rnd = Int( arc4random_uniform( UInt32(fc) ) );
+                rnd = Int( arc4random_uniform( UInt32(game!.fc) ) );
             } while fieldsList[ rnd ].hasBomb;
             
             fieldsList[ rnd ].hasBomb = true
             // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
         }
-        
+
         for bomb in fieldsList {
             doCalcBombs(bomb)
         }
@@ -136,14 +158,14 @@ class NXMineView : NSView, NSTextDelegate {
         
         self.window?.autodisplay = true
         
-        maxspc = fc // set max clickable field
+        maxspc = game!.fc // set max clickable field
         temp = 0; // reset time counter
         
         // FIXME: is this field is used anymore?
         actTextField = nil
         
         // update displays
-        bombDisplay?.integerValue = bombs
+        bombDisplay?.integerValue = Int(game!.bombs)
         timeDisplay?.integerValue = 0
         
         // let it go
@@ -170,7 +192,7 @@ class NXMineView : NSView, NSTextDelegate {
                 if bomb.hasBomb {
                     bomb.image = NSImage(named:"brickPushedAndBomb.tiff")
                 } else {
-                    bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
+                    bomb.image = NSImage(named:NXMineView.IMAGE_NAMES[Int(bomb.bombsAround)])
                 }
             }
             
@@ -183,7 +205,7 @@ class NXMineView : NSView, NSTextDelegate {
             
         } else {
             // explore clicked area
-            doUncover(sender.pos_x, sender.pos_y)
+            doUncover( Int(sender.pos_x), Int(sender.pos_y) )
             
             if checkWinState() {
                 // Win !!!
@@ -237,12 +259,7 @@ class NXMineView : NSView, NSTextDelegate {
     
     
     func initGame(mode : GameMode) {
-        let setup = [
-            // mode -> title, width, height, n of bombs to hide
-            GameMode.BEGINNER : (title:"Beginner", cols:10, rows:10, bombs:10),
-            GameMode.MEDIUM : (title:"medium", cols:20, rows:20, bombs:60),
-            GameMode.EXPERT : (title:"Expert", cols:20, rows:20, bombs:100)
-        ]
+        
 
         
         if isRunning {
@@ -256,19 +273,18 @@ class NXMineView : NSView, NSTextDelegate {
         fieldsList.removeAll()
 
 
-        // set actual game mode
-        gameMode = mode
-
         // initialize table
-        if let s = setup[gameMode] {
+        if let s = NXMineView.SETUP[mode] {
+            game = GameSetup(mode: mode, fh: UInt(s.cols), fw: UInt(s.rows), bombs: UInt(s.bombs))
+            
             // set window title
             self.window?.title = s.title
             
             // -- //
             self.window?.autodisplay = false
 
-            bombs = s.bombs
-            (fw, fh, fc) = ( s.cols, s.rows, s.cols*s.rows)
+            // bombs = s.bombs
+            // (fw, fh) = ( s.cols, s.rows)
 
             // Resize everything
             if let aRect = self.window?.frame {
@@ -276,7 +292,7 @@ class NXMineView : NSView, NSTextDelegate {
                 self.window?.setFrame(
                     NSRect(
                         origin: aRect.origin,
-                        size: CGSize(width: 16 + CGFloat(fw)*18, height: 16 + 64 + CGFloat(fh)*18)
+                        size: CGSize(width: 16 + CGFloat(game!.fw)*18, height: 16 + 64 + CGFloat(game!.fh)*18)
                     ),
                     display: true
                 )
@@ -284,7 +300,7 @@ class NXMineView : NSView, NSTextDelegate {
                 // resize minefield view
                 self.frame = NSRect(
                     origin: self.frame.origin,
-                    size: CGSize(width: CGFloat(fw)*18, height: CGFloat(fh)*18)
+                    size: CGSize(width: CGFloat(game!.fw)*18, height: CGFloat(game!.fh)*18)
                 )
             }
             
@@ -293,12 +309,13 @@ class NXMineView : NSView, NSTextDelegate {
 
 
             fieldsList = [MineButton]()
-            for (var j=0; j<s.rows; j++) {
-                 for (var i=0; i<s.cols; i++) {
+            
+            
+            for var j in 0..<Int(game!.fw) {
+                for var i in 0..<Int(game!.fh) {
                     let obj = MineButton(frame: NSRect(x: i*18, y:j*18, width:18, height: 18))
 
-                    obj.pos_x = i
-                    obj.pos_y = j
+                    (obj.pos_x, obj.pos_y) = (i, j)
 
                     // obj.target = self
                     // obj.action = Selector("buttonPushed:")
@@ -336,7 +353,7 @@ class NXMineView : NSView, NSTextDelegate {
         if win {
             var field1 : NSTextField
             var field2 : NSTextField
-            switch gameMode {
+            switch game!.mode {
             case .BEGINNER:
                 field1 = time0!
                 field2 = name0!
@@ -398,7 +415,7 @@ class NXMineView : NSView, NSTextDelegate {
         // Phase one .. mark field
         
         // set bomb image accordingly
-        bomb.image = NSImage(named:imageNames[Int(bomb.bombsAround)])
+        bomb.image = NSImage(named:NXMineView.IMAGE_NAMES[Int(bomb.bombsAround)])
         bomb.enabled = false
         
         bomb.visited = true
@@ -500,8 +517,8 @@ class NXMineView : NSView, NSTextDelegate {
     
     // Find and return bomb at position
     func bombAtX(x : Int, Y y : Int) -> MineButton? {
-        if x >= 0 && x < fw && y >= 0 && y < fh {
-            return fieldsList[x+(y*fw)]
+        if x >= 0 && x < Int(game!.fw) && y >= 0 && y < Int(game!.fh) {
+            return fieldsList[x+(y*Int(game!.fw) )]
         }
         return .None
     }
@@ -510,20 +527,20 @@ class NXMineView : NSView, NSTextDelegate {
 
 
     func checkWinState() -> Bool {
-        if maxspc == bombs {
+        if maxspc == game!.bombs {
             return true
         }
         
         if bombDisplay?.integerValue == 0 {
             // all flags set out
-            var k = 0
+            var k : UInt = 0
             for b in fieldsList {
                 if b.flagged && b.hasBomb {
                     k++
                 }
             }
             
-            if k == bombs {
+            if k == game!.bombs {
                 return true
             }
         }
