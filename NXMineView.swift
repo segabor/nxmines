@@ -8,6 +8,9 @@
 
 import Cocoa
 
+typealias Field = (Int, Int)
+
+
 class NXMineView : NSView, NSTextDelegate {
     // outlets
     @IBOutlet var startButton : NSButton?
@@ -148,7 +151,6 @@ class NXMineView : NSView, NSTextDelegate {
             } while fieldsList[ rnd ].hasBomb;
             
             fieldsList[ rnd ].hasBomb = true
-            // println("Bomb was put here \(fieldsList[rnd].pos_x),\(fieldsList[rnd].pos_y)")
         }
 
         for bomb in fieldsList {
@@ -156,7 +158,7 @@ class NXMineView : NSView, NSTextDelegate {
         }
         
         
-        self.window?.autodisplay = true
+        self.window!.autodisplay = true
         
         maxspc = game!.fc // set max clickable field
         temp = 0; // reset time counter
@@ -205,7 +207,7 @@ class NXMineView : NSView, NSTextDelegate {
             
         } else {
             // explore clicked area
-            doUncover( Int(sender.pos_x), Int(sender.pos_y) )
+            doUncover( sender.pos )
             
             if checkWinState() {
                 // Win !!!
@@ -315,8 +317,8 @@ class NXMineView : NSView, NSTextDelegate {
                 for var i in 0..<Int(game!.fh) {
                     let obj = MineButton(frame: NSRect(x: i*18, y:j*18, width:18, height: 18))
 
-                    (obj.pos_x, obj.pos_y) = (i, j)
-
+                    obj.pos = (i,j)
+                    
                     // obj.target = self
                     // obj.action = Selector("buttonPushed:")
 
@@ -398,10 +400,16 @@ class NXMineView : NSView, NSTextDelegate {
         }
     }
 
-    let d = [ (-1,-1), (0,-1), (1,-1), (-1,0), (1,0), (-1,1), (0,1), (1,1) ]
 
-    func doUncover(px : Int,  _ py : Int) {
-        if let bomb = bombAtX(px, Y: py) {
+    let Neighbors : [Field] = [
+        (-1,-1), (0,-1), (1,-1),
+        (-1,0),          (1,0),
+        (-1,1),  (0,1),  (1,1)
+    ]
+
+
+    func doUncover(f : Field) {
+        if let bomb = bombAt(f) {
             doUncover(bomb)
         }
     }
@@ -424,8 +432,8 @@ class NXMineView : NSView, NSTextDelegate {
 
         // Phase two, visit neighbor fields
         if bomb.bombsAround == 0 {
-            for r in d {
-                if let neighbor = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
+            for r in Neighbors {
+                if let neighbor = bombAt( (bomb.pos.0 + r.0, bomb.pos.1 + r.1) ) {
                     if !neighbor.hasBomb {
                         doUncover( neighbor )
                     }
@@ -439,8 +447,8 @@ class NXMineView : NSView, NSTextDelegate {
         // count surrounding bombs
         var count : UInt = 0
 
-        for r in d {
-            if let b = bombAtX(bomb.pos_x+r.0, Y: bomb.pos_y+r.1) {
+        for r in Neighbors {
+            if let b = bombAt( (bomb.pos.0 + r.0, bomb.pos.1 + r.1) ) {
                 if b.hasBomb {
                     count++
                 }
@@ -516,9 +524,9 @@ class NXMineView : NSView, NSTextDelegate {
     
     
     // Find and return bomb at position
-    func bombAtX(x : Int, Y y : Int) -> MineButton? {
-        if x >= 0 && x < Int(game!.fw) && y >= 0 && y < Int(game!.fh) {
-            return fieldsList[x+(y*Int(game!.fw) )]
+    func bombAt( f : Field ) -> MineButton? {
+        if f.0 >= 0 && f.0 < Int(game!.fw) && f.1 >= 0 && f.1 < Int(game!.fh) {
+            return fieldsList[f.0+(f.1*Int(game!.fw))]
         }
         return .None
     }

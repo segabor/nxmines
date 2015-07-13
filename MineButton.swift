@@ -10,9 +10,8 @@ import Cocoa
 
 class MineButton : NSButton
 {
-    var pos_x = 0;
-    var pos_y = 0;
-
+    var pos : Field = (0,0)
+    
     var hasBomb = false
     var flagged = false
     var visited = false
