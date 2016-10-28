@@ -263,7 +263,7 @@ class NXMineView : NSView, NSTextDelegate {
             self.window?.title = s.title
             
             // -- //
-            self.window!.autodisplay = false
+            self.window?.autodisplay = false
 
             // Resize everything
             if let aRect = self.window?.frame {
@@ -385,6 +385,11 @@ class NXMineView : NSView, NSTextDelegate {
     }
 
 
+    static let Neighbors : [Field] = [
+        (-1,-1), (0,-1), (1,-1),
+        (-1,0),          (1,0),
+        (-1,1),  (0,1),  (1,1)
+    ]
 
 
     func doUncover(f : Field) {
@@ -407,10 +412,10 @@ class NXMineView : NSView, NSTextDelegate {
 
         maxspc--
 
-        // Visit neighbor fields
-        if field.bombsAround == 0 {
-            for r in Neighbors {
-                if let neighbor = fieldAt( ( field.pos + r ) ) {
+        // Phase two, visit neighbor fields
+        if bomb.bombsAround == 0 {
+            for r in NXMineView.Neighbors {
+                if let neighbor = bombAt( (bomb.pos.0 + r.0, bomb.pos.1 + r.1) ) {
                     if !neighbor.hasBomb {
                         doUncover( neighbor )
                     }
@@ -424,9 +429,17 @@ class NXMineView : NSView, NSTextDelegate {
      * Count surrounding bombs
      */
     func doCalcBombs(bomb : MineButton) {
-        bomb.bombsAround = Neighbors.map { fieldAt( (bomb.pos + $0) ) }
-            .filter { $0 != nil && $0!.hasBomb }
-            .reduce(0) { (sum,bomb) in sum+1  }
+        // count surrounding bombs
+        var count : UInt = 0
+
+        for r in NXMineView.Neighbors {
+            if let b = bombAt( (bomb.pos.0 + r.0, bomb.pos.1 + r.1) ) {
+                if b.hasBomb {
+                    count++
+                }
+            }
+        }
+        bomb.bombsAround = count
     }
 
 
@@ -466,14 +479,14 @@ class NXMineView : NSView, NSTextDelegate {
     func saveScores() {
         let ud = NSUserDefaults.standardUserDefaults()
 
-        ud.setObject(name0.stringValue, forKey: "name0")
-        ud.setInteger(time0.integerValue, forKey: "time0")
+        ud.setObject(name0!.stringValue, forKey: "name0")
+        ud.setInteger(time0!.integerValue, forKey: "time0")
 
-        ud.setObject(name1.stringValue, forKey: "name1")
-        ud.setInteger(time1.integerValue, forKey: "time1")
+        ud.setObject(name1!.stringValue, forKey: "name1")
+        ud.setInteger(time1!.integerValue, forKey: "time1")
 
-        ud.setObject(name2.stringValue, forKey: "name2")
-        ud.setInteger(time2.integerValue, forKey: "time2")
+        ud.setObject(name2!.stringValue, forKey: "name2")
+        ud.setInteger(time2!.integerValue, forKey: "time2")
     }
 
 
