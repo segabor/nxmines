@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		C20BA46819560592001FC912 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BA46719560592001FC912 /* main.swift */; };
 		C20C02F00E74F530006777F1 /* brick1.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E80E74F530006777F1 /* brick1.tiff */; };
 		C20C02F10E74F530006777F1 /* brick2.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02E90E74F530006777F1 /* brick2.tiff */; };
 		C20C02F20E74F530006777F1 /* brick3.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C20C02EA0E74F530006777F1 /* brick3.tiff */; };
@@ -43,7 +42,6 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* NXMines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXMines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20BA4661956051A001FC912 /* NXMines_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXMines_Prefix.pch; sourceTree = "<group>"; };
-		C20BA46719560592001FC912 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C20C02E80E74F530006777F1 /* brick1.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick1.tiff; sourceTree = "<group>"; };
 		C20C02E90E74F530006777F1 /* brick2.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick2.tiff; sourceTree = "<group>"; };
 		C20C02EA0E74F530006777F1 /* brick3.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = brick3.tiff; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				C20BA4661956051A001FC912 /* NXMines_Prefix.pch */,
-				C20BA46719560592001FC912 /* main.swift */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -211,7 +208,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = C20C02DF0E74F42D006777F1 /* Build configuration list for PBXProject "NXMines" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -268,7 +270,6 @@
 				C2B65804195716A0009E374E /* NXMineView.swift in Sources */,
 				C2411A2A1955FA1A00406B2E /* MyApp.swift in Sources */,
 				C2B658021956DC6F009E374E /* MineButton.swift in Sources */,
-				C20BA46819560592001FC912 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +298,24 @@
 		C20C02D90E74F42C006777F1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 			};
@@ -306,13 +324,48 @@
 		C20C02DA0E74F42C006777F1 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Deployment;
 		};
 		C20C02DB0E74F42C006777F1 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 			};
 			name = Default;
@@ -336,6 +389,7 @@
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -357,6 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.segabor.NXMines;
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -376,6 +431,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.segabor.NXMines;
 				PRODUCT_NAME = NXMines;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;

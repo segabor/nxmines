@@ -46,18 +46,18 @@ class MineButton : NSButton
         super.init(frame: frameRect)
 
         // decorate button
-        setButtonType(NSButtonType.MomentaryChangeButton)
+        setButtonType(NSButtonType.momentaryChange)
         
         image = NSImage(named: "brick.tiff")
         alternateImage = NSImage(named: "brickPushed.tiff")
-        bordered = false
+        isBordered = false
     }
 
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         (self.superview as! NXMineView).buttonPushed(self)
     }
 
-    override func rightMouseUp(theEvent: NSEvent) {
+    override func rightMouseUp(with theEvent: NSEvent) {
         (self.superview as! NXMineView).rightButtonPushed(self)
     }
     
@@ -82,11 +82,11 @@ class MineButton : NSButton
     func doSwapFlag() {
         if flagged {
             flagged = false
-            enabled = true
+            isEnabled = true
             image = NSImage(named:"brick.tiff")
         } else {
             flagged = true
-            enabled = false
+            isEnabled = false
             image = NSImage(named:"brickAndFlag.tiff")
         }
 

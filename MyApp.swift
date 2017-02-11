@@ -8,19 +8,17 @@
 
 import Cocoa
 
+@NSApplicationMain
 class MyApp : NSObject, NSApplicationDelegate
 {
     @IBOutlet var mineView : NXMineView!
 
-
-    // MARK: NSApplicationDelegate
-
-    func applicationShouldTerminate(app : NSApplication) -> NSApplicationTerminateReply {
+    func applicationShouldTerminate(_ app : NSApplication) -> NSApplicationTerminateReply {
 
         // save game scores
         mineView.saveScores()
 
         // let the app terminate now
-        return NSApplicationTerminateReply.TerminateNow
+        return NSApplicationTerminateReply.terminateNow
     }
 }
